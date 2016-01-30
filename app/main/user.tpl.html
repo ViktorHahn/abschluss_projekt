@@ -1,0 +1,140 @@
+<!--todo fehlermeldungen positionieren-->
+
+<!--Ausgabe von Servernachrichten-->
+<span class="msg" data-ng-if="msg" data-ng-model="msg">{{msg}}</span>
+<span class="errMsg" data-ng-if="errMsg" data-ng-model="errMsg">{{errMsg}}</span>
+
+<!--Ausgabe von Benutzerdaten -->
+<section class="profile">
+    <!-- Editierungs button fuer das Profil -->
+    <label for="edit-user" title="Profil bearbeiten"><input id="edit-user" type="checkbox" data-ng-model="mailchecked"></label>
+
+
+    <!-- Profil loeschen-->
+    <input id="del-profile" class="form_btn" type="button" data-ng-click="deleteUser()" value="Profil löschen">
+
+    <!--Ausgabe Userdaten-->
+    <div class="clear">
+        <div>
+            <h2>Benutzername:</h2>
+            <p>{{userData.username}}</p>
+        </div>
+        <div>
+            <h2>Email:</h2>
+            <p>{{userData.email}}</p>
+        </div>
+    </div>
+
+    <p id="edit-info" data-ng-if="mailchecked">Sie können Email und/oder Passwort ändern.</p>
+    <div class="form-profile">
+        <form data-ng-if="mailchecked" name="edit_user" data-ng-model="edituser" novalidate>
+        <div class="msg_wrapper">
+            <!--Neue Email-->
+            <label for="newmail">Ihre neue Email-Adresse:</label>
+            <input type="email"
+                   placeholder="Neue Email..."
+                   id="newmail"
+                   name="new_email"
+                   data-ng-model="edituser.mail"
+                   data-ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 600, 'blur': 0 } }">
+
+            <!-- Validierung neue Email -->
+            <span data-ng-show="(edit_user.new_email.$dirty && edit_user.new_email.$invalid) || edit_user.new_email.$touched">
+                <span class="form_message" data-ng-show="edit_user.new_email.$pending">Es wird überprüft ob die angegebene Emailaddresse  bereits vergeben ist.</span>
+                <span class="form_message" data-ng-show="edit_user.new_email.$error.unique">Die angegebene Emailaddresse ist bereits Vergeben.</span>
+                <span class="form_message" data-ng-show="edit_user.new_email.$error.required">Bitte geben Sie Ihre Emailadresse an.</span>
+                <span class="form_message" data-ng-show="edit_user.new_email.$error.email">Diese Emailadresse ist ung&uuml;ltig.</span>
+                <span class="form_message" data-ng-show="edit_user.new_email.$error.notmatching">Die Emailadressen stimmen nicht &uuml;berein.</span>
+            </span>
+        </div>
+
+        <div class="msg_wrapper">
+            <!-- confMail -->
+            <label for="newmailconf">Email-Adresse wiederholen:</label>
+            <input type="email"
+                   placeholder="Email bestätigen..."
+                   id="newmailconf"
+                   name="conf_email"
+                   data-ng-model="edituser.confmail"
+                   data-ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 600, 'blur': 0 } }"
+                   data-ng-change="valEquals(edit_user.new_email, edit_user.conf_email)">
+            <!-- Validierung confMail -->
+            <span data-ng-show="(edit_user.conf_email.$dirty && edit_user.conf_email.$invalid) || edit_user.conf_email.$touched">
+                <span class="form_message" data-ng-show="edit_user.conf_email.$error.required">Bitte wiederholen Sie Ihre Emailadresse.</span>
+                <span class="form_message" data-ng-show="edit_user.conf_email.$error.email">Diese Emailadresse ist ung&uuml;ltig.</span>
+            </span>
+        </div>
+
+        <div class="msg_wrapper">
+            <!-- Abfrage altes Passwort -->
+            <label for="oldpass">Bisheriges Passwort:</label>
+            <input type="password"
+                   placeholder="Bisheriges Passwort..."
+                   id="oldpass"
+                   name="oldpassword"
+                   data-ng-minlength="6"
+                   data-ng-maxlength="20"
+                   data-ng-model="edituser.oldpassword"
+                   data-ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 600, 'blur': 0 } }"
+                   required>
+            <!-- Validierung altes Passwort -->
+            <span data-ng-show="(edit_user.oldpassword.$dirty && edit_user.oldpassword.$invalid) || edit_user.oldpassword.$touched">
+                <span class="form_message" data-ng-show="edit_user.oldpassword.$error.required">Tragen Sie bitte einen Passwort ein.</span>
+                <span class="form_message" data-ng-show="edit_user.oldpassword.$error.minlength">Das Passwort sollte aus mindestens 6 Zeichen bestehen.</span>
+                <span class="form_message" data-ng-show="edit_user.oldpassword.$error.maxlength">Das Passwort sollte aus maximal 20 Zeichen bestehen.</span>
+            </span>
+        </div>
+        <div class="msg_wrapper">
+            <!-- neues Passwort-->
+            <label for="pass">Neues Passwort:</label>
+            <input type="password"
+                   placeholder="Neues Passwort..."
+                   id="pass"
+                   name="password"
+                   data-ng-minlength="6"
+                   data-ng-maxlength="20"
+                   data-ng-model="edituser.password"
+                   data-ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 600, 'blur': 0 } }"
+                   required>
+            <!-- Validierung neues Passwort-->
+            <span data-ng-show="(edit_user.password.$dirty && edit_user.password.$invalid) || edit_user.password.$touched">
+                <span class="form_message" data-ng-show="edit_user.password.$error.required">Tragen Sie bitte einen Passwort ein.</span>
+                <span class="form_message" data-ng-show="edit_user.password.$error.minlength">Das Passwort sollte aus mindestens 6 Zeichen bestehen.</span>
+                <span class="form_message" data-ng-show="edit_user.password.$error.maxlength">Das Passwort sollte aus maximal 20 Zeichen bestehen.</span>
+                <span class="form_message" data-ng-show="edit_user.password.$error.notmatching">Die Passw&ouml;rter stimmen nicht &uuml;berein.</span>
+            </span>
+        </div>
+        <div class="msg_wrapper">
+            <!-- confPasswort-->
+            <label for="confpass">Passwort bestätigen:</label>
+            <input type="password"
+                   placeholder="Passwort bestätigen..."
+                   id="confpass"
+                   name="confpassword"
+                   data-ng-minlength="6"
+                   data-ng-maxlength="20"
+                   data-ng-model="edituser.confpassword"
+                   data-ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 600, 'blur': 0 } }"
+                   data-ng-change="valEquals(edit_user.password, edit_user.confpassword)"
+                   required>
+            <!-- Validierung neues confPasswort-->
+            <span data-ng-show="(edit_user.confpassword.$dirty && edit_user.confpassword.$invalid) || edit_user.confpassword.$touched">
+                <span class="form_message" data-ng-show="edit_user.confpassword.$error.required">Bitte wiedeholen Sie Ihr Passwort.</span>
+                <span class="form_message" data-ng-show="edit_user.confpassword.$error.minlength">Das Passwort sollte aus mindestens 6 Zeichen bestehen.</span>
+                <span class="form_message" data-ng-show="edit_user.confpassword.$error.maxlength">Das Passwort sollte aus maximal 20 Zeichen bestehen.</span>
+            </span>
+        </div>
+            <!--Update-User-->
+            <input class="form_btn" type="button" data-ng-click="updateUser(edit_user)" value="Speichern">
+        </form>
+    </div>
+    <!-- Popup Bestaettigung des Loeschvorgangs-->
+    <div class="confirm-delete" data-ng-show="delFlag">
+        <div class="delete-view">
+            <p>Sind Sie sicher, dass Sie Ihr Profil löschen wollen?</p>
+            <input class="form_btn" type="button" value="Löschen" data-ng-click="delUser = true; delFlag = false">
+            <input class="form_btn" type="button" value="Abbrechen" data-ng-click="delUser = false; delFlag = false">
+        </div>
+    </div>
+
+</section>

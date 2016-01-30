@@ -1,0 +1,880 @@
+/*style.css*/
+body {
+    margin: auto;
+    background-color: #F7F7F7;
+    font-family: mont, sans-serif;
+}
+
+/* BEGIN HEADER */
+header {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #386E91;
+}
+
+/* BEGIN LOGO */
+.logo {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0;
+    padding-top: 20px;
+}
+#logo {
+    display: block;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+}
+#subheading {
+    display: inline-block;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    max-width: 960px;
+    font-family: mont, sans-serif;
+    font-size: 1.1em;
+    text-align: center;
+    color: #F3F3F3;
+}
+/* END LOGO */
+
+/* START SEARCH - MENU */
+.search-nav{
+    height: 55px;
+    background-color: #1D3D59;
+    box-shadow: 0 10px 10px -6px #1D3D59;
+    position: relative;
+    top: auto;
+    left: auto;
+}
+.nav-wrapper{
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    top: auto;
+    left: auto;
+}
+
+select[name="select-tag"] {
+    margin: 0;
+    margin-top: 10px;
+    height: 35px;
+    width: 150px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 2px 0 0 2px;
+    font-family: lato, sans-serif;
+    font-size: 1em;
+    background-color: #89BDD3;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+input[name="searchTerm"]{
+    margin: 0;
+    margin-top: 10px;
+    margin-left: -6px;
+    height: 35px;
+    width: 280px;
+    border: none;
+    font-family: lato, sans-serif;
+    font-size: 1em;
+    padding-left: 10px;
+}
+.search-Form input[type="submit"]{
+    margin: 0;
+    margin-top: 10px;
+    margin-left: -6px;
+    height: 35px;
+    width: 50px;
+    border: none;
+    border-radius: 0 2px 2px 0;
+    font-family: lato, sans-serif;
+    font-size: 1em;
+    padding-left: 10px;
+    background-color: #89BDD3;
+    background-image: url("icons/search/ic_search_white_24px.svg");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    cursor: pointer;
+}
+.search-Form input[type="submit"]:active{
+    background-image: url("icons/search/ic_search_black_24px.svg");
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+/* END SEARCH */
+/* START NAV */
+nav {
+    background-image: url("icons/menu/ic_reorder_blue_48px.svg");
+    background-repeat: no-repeat;
+    width: 50px;
+    height:50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+nav:hover{
+    background-image: url("icons/menu/ic_reorder_white_48px.svg");
+}
+nav:active{
+    background-image: url("icons/menu/ic_reorder_blue_48px.svg");
+}
+.navigation {
+    width: 15em;
+    position: relative;
+    top: 2.7em;
+    right: 12.5em;
+    float: left;
+    text-align: left;
+    list-style: none;
+    padding: 0 0;
+    margin: 0 0;
+    z-index: 20;
+}
+.nav-item a {
+    display: block;
+    height: 30px;
+    width: 12em;
+    background-color: #1D3D59;
+    border-bottom: 1px solid #FFFFFF;
+    padding-left: 60px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    background-size: 50px 50px;
+    background-position: 5px 10px;
+    background-repeat: no-repeat;
+}
+.nav-item a:link{
+    font-family: mont-bold, sans-serif;
+    font-size: 1em;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.nav-item a:visited{
+    color: #FFFFFF;
+}
+.nav-item a:hover{
+    font-family:mont-bold, sans-serif;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #1D3D59;
+    color: #1D3D59;
+}
+.nav-item a:active{
+    font-family:mont-bold, sans-serif;
+    background-color: #89BDD3;
+    border-bottom: 1px solid #1D3D59;
+    color: #FFFFFF;
+}
+#home a, #home a:visited{
+    background-image: url("icons/home/ic_home_blue_48px.svg");
+}
+#home a:active{
+    background-image: url("icons/home/ic_home_white_48px.svg");
+}
+#groups a, #groups a:visited{
+    background-image: url("icons/group/ic_people_blue_48px.svg");
+}
+#groups a:active{
+    background-image: url("icons/group/ic_people_white_48px.svg");
+}
+#lawyers a, #lawyers a:visited{
+    background-image: url("icons/lawyers/lawyers_blue.svg");
+    background-size: 40px 40px;
+    background-position: 10px 10px;
+}
+#lawyers a:active{
+    background-image: url("icons/lawyers/lawyers_white.svg");
+    background-size: 45px 45px;
+    background-position: 10px 10px;
+}
+#add-group a, #add-group a:visited{
+    background-image: url("icons/add_group/ic_group_add_blue_48px.svg");
+}
+#add-group a:active{
+    background-image: url("icons/add_group/ic_group_add_white_48px.svg");
+}
+#login a, #login a:visited{
+    background-image: url("icons/lockopen/ic_lock_open_blue_48px.svg");
+}
+#login a:active{
+    background-image: url("icons/lockopen/ic_lock_open_white_48px.svg");
+}
+#logout a, #logout a:visited{
+    background-image: url("icons/lockclosed/ic_lock_outline_blue_48px.svg");
+}
+#logout a:active{
+    background-image: url("icons/lockclosed/ic_lock_outline_white_48px.svg");
+}
+#profile a, #profile a:visited{
+    background-image: url("icons/profile/ic_account_circle_blue_48px.svg");
+}
+#profile a:active{
+    background-image: url("icons/profile/ic_account_circle_white_48px.svg");
+}
+#impressum a, #impressum  a:visited{
+    background-image: url("icons/contact/ic_email_blue_48px.svg");
+}
+#impressum a:active{
+    background-image: url("icons/contact/ic_email_white_48px.svg");
+}
+#contact a, #contact a:visited{
+    background-image: url("icons/impressum/ic_local_library_blue_48px.svg");
+}
+#contact a:active{
+    background-image: url("icons/impressum/ic_local_library_white_48px.svg");
+}
+/* END NAV*/
+/* END SEARCH - NAV */
+/* START MAIN */
+main{
+    max-width: 960px;
+    margin: 0 auto;
+}
+/* START LOGIN */
+.required-red{
+    color: red;
+}
+#log-form, #reg-form{
+    margin: 0;
+    padding: 0;
+    color: #1D3D59;
+    background: #FFFFFF;
+    box-shadow: 2px 5px 10px #1D3D59;
+    font-family: lato-bold, sans-serif;
+}
+#log-form fieldset, #reg-form fieldset{
+    border: none;
+    margin-top: 25px;
+    padding: 30px;
+    min-height: 28em;
+}
+#log-form legend, #reg-form legend{
+    padding-top: 1.2em;
+}
+#log-form label, #reg-form label{
+    display: block;
+    width: 35%;
+    padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+#log-form input{
+    display: block;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: mont, sans-serif;
+}
+.msg_anchor {
+    width: 100%;
+}
+.login_message {
+    position:absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: -4.6em;
+    min-width: 20em;
+    max-width: 45%;
+    background-color: #FFFFFF;
+    color: red;
+    border: 2px solid red;
+    border-radius: 2px;
+    text-align: center;
+    padding: .3em;
+}
+#log-form p {
+    margin-top: 3em;
+    text-align: center;
+}
+#log-form input[type="text"], input[type="password"]{
+    font-size: 0.9em;
+    padding-top: .3em;
+    padding-bottom: .3em;
+    border: none;
+    border-bottom: 1px solid #89BDD3;
+    color: #1D3D59;
+}
+#log-form input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+    border-bottom: 2px solid #1D3D59;
+}
+.form_btn {
+    font-family: lato, sans-serif;
+    font-size: 1em;
+    background-color: #89BDD3;
+    color: #1D3D59;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: 1px solid #1D3D59;
+    border-radius: 2px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.form_btn:hover {
+    background-color: #1D3D59;
+    color: #FFFFFF;
+}
+.form_btn:active {
+    background-color: #FFFFFF;
+    color: #89BDD3;
+}
+.form_btn[disabled]{
+    opacity: 0.5;
+}
+#log-form a {
+    text-decoration: none;
+}
+
+/* END LOGIN */
+/* START REGISTER */
+.reg_form label, .form-profile label {
+    font-family: mont, sans-serif;
+    color: #1D3D59;
+    position: relative;
+}
+.reg_form input[type="text"],
+.reg_form input[type="password"],
+.reg_form input[type="email"],
+.form-profile input[type="password"],
+.form-profile input[type="email"] {
+    outline: none;
+    display: block;
+    font-family: mont, sans-serif;
+    color: #1D3D59;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-bottom: 1px solid;
+    font-size: 1em;
+}
+.reg_form input[type="text"]:focus,
+.reg_form input[type="password"]:focus,
+.reg_form input[type="email"]:focus,
+.form-profile input[type="password"]:focus,
+.form-profile input[type="email"]:focus {
+    border-bottom: 2px solid #1D3D59;
+}
+
+/* START USER*/
+.reg-username label,.reg-username input,
+.form-profile label, .form-profile input{
+    display: block;
+    width: 40% !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+/* END USER*/
+
+/* START PASSWOERTER */
+.form-wrapper {
+    width: 100%;
+}
+.form-left, .form-right{
+    position: relative;
+    display: inline-block;
+    width: 49%;
+    margin-top: .5em;
+}
+.form-left input, .form-left label, .form-left .form_message,
+.form-right input, .form-right label, .form-right .form_message{
+    width: 80% !important;
+}
+label[for="law"]{
+    display: block;
+    width: 80% !important;
+    margin: 1em auto;
+    text-align: center;
+    cursor: pointer;
+    padding: 0.5em;
+    background-color: #89BDD3;
+}
+label[for="law"]:hover{
+    color: #FFFFFF;
+    background-color: #1D3D59;
+}
+label[for="law"]:active{
+    color: #89BDD3;
+    background-color: #FFFFFF;
+}
+#law {
+    display: none;
+}
+.reg_form select{
+    display: block;
+    width: 80% ;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: mont, sans-serif;
+    font-size: 1em;
+    color: #1D3D59;
+}
+#reg-form p{
+    text-align: center;
+}
+.reg_form .form_btn {
+    width: 35% !important;
+    display: inline-block;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+.form_message {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0.5em;
+    text-align: center;
+    color: red;
+    background-color: #FFFFFF;
+    border: 2px solid red;
+    padding: 0.5em;
+    margin: 0 auto;
+    border-radius: 2px;
+    max-width: 60%;
+}
+.form_msg-short{
+    position: absolute;
+    right: 0;
+    left: 0;
+    font-size: 0.9em;
+    top: 0.3em;
+    color: red;
+    background-color: #FFFFFF;
+    border: 2px solid red;
+    border-radius: 2px;
+    padding: 0.5em;
+    text-align: center;
+}
+/* BEGIN GROUP-OVERVIEW */
+.short-grps {
+    color: #1D3D59;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 1em;
+    background: #FFFFFF;
+    box-shadow: 2px 5px 10px #1D3D59;
+}
+.group a {
+    color: #FFFFFF;
+}
+.group a:visited {
+    color: #FFFFFF;
+}
+.group a:hover {
+    color: #1D3D59;
+}
+.group-name{
+    background-color: #1D3D59;
+    color: #FFFFFF;
+    margin-left: 0.5em;
+}
+.short-grps h2, .tag-h, .addr-h  {
+    margin: 0 auto !important;
+    padding-left: 0.5em;
+    font-size: 1em;
+}
+.short-grps p {
+    font-size: 1em;
+    padding-left: 0.5em;
+    font-family: lato-bold !important;
+}
+.group, .cgroup{
+    display: inline-block;
+    width: 49%;
+    margin: 0 auto;
+}
+.cgroup {
+    margin-left: -0.3em;
+}
+.group-name, .cgroup-name {
+    font-family: lato, sans-serif !important;
+    line-height: 1.5em !important;
+    margin: 0 auto;
+    padding-left: 0.5em;
+    font-size: 1em;
+}
+.group-tag, .cgroup-addr, .tag-h, .addr-h {
+    display: inline-block;
+}
+.tag-h, .addr-h, .desc-h {
+    color: #1D3D59;
+}
+.cgroup-name {
+    background-color: #1D3D59;
+    color: #FFFFFF;
+}
+.grp-overview a{
+    background-image: url('icons/eye/ic_visibility_white_48px.svg');
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    padding-left: 25px;
+    margin-left: 0.5em;
+    background-position: left;
+    font-size: 1em;
+}
+/* END GROUP-OVERVIEW */
+/* BEGIN GROUPVIEW */
+.group-view {
+    color: #1D3D59;
+    margin: 10px auto;
+    padding: 1em;
+    padding-left: 0.5em;
+    background: #FFFFFF;
+    box-shadow: 2px 5px 10px #1D3D59;
+}
+.group-view h2, .group-view .tag-h, .group-view .addr-h,.group-view .creator-h {
+    margin: 0 auto;
+    margin-top: 1em;
+    padding-left: 0.5em;
+    font-size: 1em;
+}
+.group-view p {
+    font-size: 1em;
+    padding-left: 0.5em;
+    font-family: lato-bold, sans-serif !important;
+}
+.grp-right, .grp-left {
+    float: left;
+    width: 50%;
+}
+.desc {
+    clear: both;
+}
+.desc p {
+    line-height: 1.8em;
+    padding-right: 50px;
+}
+[contenteditable] {
+    line-height: 1.8em;
+    border-left: 3px solid #89BDD3;
+    padding-right: 50px;
+    padding-left: 10px;
+    background-image: url('icons/create/ic_create_blue_48px.svg');
+    background-repeat: no-repeat;
+    background-size: 1.8em 1.8em;
+    background-position: right;
+    cursor: pointer;
+    outline-color: #1D3D59;
+}
+.confirm-delete {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(29,61,89,0.8);
+    width: 100%;
+    height: 100%;
+}
+.delete-view {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 30em;
+    min-height: 3em;
+    max-height: 7em;
+    color: #1D3D59;
+    text-align: center;
+    background-color: #E3E3E3;
+    border: 2px solid #1D3D59;
+    border-radius: 2px;
+}
+.btn-delete {
+    min-width: 1.5em;
+    float: right;
+    margin: 0.5em auto;
+    padding-left: 1.5em;
+    background-image: url("icons/delete/ic_delete_blue_48px.svg");
+    background-repeat: no-repeat;
+    background-size: 1.4em;
+    font-size: 1em !important;
+}
+.btn-delete:hover {
+    background-image: url("icons/delete/ic_delete_blue_48px.svg");
+}
+.btn-update {
+    margin: 0.5em auto;
+    padding-right: 1.5em;
+    background-image: url("icons/senden/ic_send_white_48px.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 1.4em;
+    font-size: 1em !important;
+}
+.breit {
+    min-height: 4em;
+}
+.schmal {
+    min-height: 2em;
+}
+.discussion{
+    color: #1D3D59;
+    margin: 10px auto;
+    padding: 1em;
+    background: #FFFFFF;
+    box-shadow: 2px 5px 10px #1D3D59;
+}
+.discussion h2 {
+    font-size: 1.2em;
+    background-color: #1D3D59;
+    color: #FFFFFF;
+    padding-left: 0.5em;
+    line-height: 1.5em;
+}
+.discussion p{
+    font-size: 1em;
+}
+.left-p, .right-p{
+    display: inline-block;
+    width: 48.5%;
+    margin: 0 auto;
+    font-family: lato-bold, sans-serif;
+    font-size: 0.85em !important;
+}
+.left-p{
+    padding-left: 13px;
+}
+.right-p {
+    text-align: right;
+}
+/* END GROUPVIEW*/
+/* START POSTS */
+.post {
+    border-bottom: 2px solid #1D3D59;
+}
+.message {
+    padding-left: 13px;
+}
+.new-post {
+    color: #1D3D59;
+    margin: 10px auto;
+    padding: 1em;
+    background: #FFFFFF;
+    box-shadow: 2px 5px 10px #1D3D59;
+}
+.new-post p {
+    font-family: mont, sans-serif;
+    background-color: #1D3D59;
+    color: #FFFFFF;
+    line-height: 1.5em;
+    padding-left: 10px;
+}
+.create-post, form[name="createGroup"] textarea{
+    font-family: lato-bold, sans-serif;
+    border: 2px solid #89BDD3;
+    font-size: 1em;
+    margin: 0;
+    padding: 2%;
+    width: 95.6%;
+    min-height: 10em;
+    line-height: 1.5;
+    resize: none;
+    /*box-shadow: inset 3px 3px 10px #1D3D59;*/
+}
+.create-post:focus, form[name="createGroup"] textarea:focus,
+form[name="createGroup"] input[type="text"]:focus{
+    outline: none;
+    border: 2px solid #1D3D59;
+}
+/* END POSTS */
+/*BEGIN PROFILE*/
+.profile {
+    color: #1D3D59;
+    margin: 10px auto;
+    padding: 1em;
+    background: #FFFFFF;
+    box-shadow: 2px 5px 10px #1D3D59;
+}
+.profile h2{
+    margin: 0 auto;
+    margin-top: 1em;
+    padding-left: 0.5em;
+    font-size: 1em;
+}
+.profile p {
+    font-size: 1em;
+    padding-left: 0.5em;
+    font-family: lato-bold, sans-serif !important;
+}
+#del-profile {
+    float: right;
+    height: 32px;
+    margin: 0 1em 1em 0;
+}
+.clear{
+    clear: both;
+}
+#edit-user {
+    display: none;
+}
+label[for="edit-user"] {
+    float: right;
+    margin: 0 0 1em 0;
+    text-align: center;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-color: #89BDD3;
+    border: 1px solid #1D3D59;
+    border-radius: 2px;
+    background-image: url("icons/settings/ic_settings_white_48px.svg");
+    background-repeat: no-repeat;
+    background-size: 30px;
+}
+label[for="edit-user"]:hover{
+    color: #FFFFFF;
+    background-color: #1D3D59;
+}
+label[for="edit-user"]:active{
+    color: #89BDD3;
+    background-color: #FFFFFF;
+    background-image: url("icons/settings/ic_settings_blue_48px.svg");
+}
+#edit-info {
+    text-align: center;
+}
+.form-profile label{
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+}
+.msg_wrapper{
+    position: relative;
+}
+.msg_wrapper .form_message{
+    margin-top: -2em;
+    display: inline;
+    max-width: 70%;
+}
+.profile label[for="oldpass"], .profile label[for="newmail"]{
+    border-top: 2px dashed #1D3D59;
+    padding-top: 2em;
+}
+/*END PROFILE*/
+/* START createGroupe */
+form[name="createGroup"] {
+    color: #1D3D59;
+    margin: 10px auto;
+    padding: 1em;
+    background: #FFFFFF;
+    box-shadow: 2px 5px 10px #1D3D59;
+}
+form[name="createGroup"] input[type="text"],
+form[name="createGroup"] select,
+form[name="createGroup"] textarea,
+form[name="createGroup"] label{
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+form[name="createGroup"] input[type="text"],
+form[name="createGroup"] select{
+    font-family: lato-bold, sans-serif;
+    border: 2px solid #89BDD3;
+    font-size: 1em;
+    padding: 2%;
+    width: 50%;
+    line-height: 1.5;
+    /*box-shadow: inset 3px 3px 10px #1D3D59;*/
+}
+form[name="createGroup"] select{
+    width: 54.5%;
+}
+form[name="createGroup"] .form_raw{
+    position: relative;
+}
+form[name="createGroup"] .form_message{
+    display: inline;
+    margin-left: 0;
+    margin-top: -1em;
+    text-align: center;
+    /*min-width: 50%;*/
+    /*width: 100%;*/
+    font-size: 0.9em;
+    padding: 0.5em;
+}
+form[name="createGroup"] legend{
+    font-size: 1.2em;
+    padding: 0.5em;
+}
+form[name="createGroup"] h2{
+    font-size: 1.2em;
+    margin-top: 2em;
+}
+/* END createGroupe */
+/* START lawyers*/
+.lawyers{
+    color: #1D3D59;
+    margin: 10px auto;
+    padding: 1em;
+    background: #FFFFFF;
+    box-shadow: 2px 5px 10px #1D3D59;
+}
+
+/* END lawyers*/
+/* END MAIN */
+
+h1 h2 h3 {
+    color : #1D3D59;
+    font-family: mont-bold, sans-serif;
+}
+
+/* BEGINN Ausgabe von msg und errMsg - Serverantworten*/
+.msg {
+    position: fixed;
+    top: 2em;
+    left: 0;
+    right: 0;
+    min-width: 20em;
+    max-width: 30em;
+    margin: 0 auto;
+    padding: 1em;
+    border: 2px solid #1D3D59;
+    border-radius: 2px;
+    background-color: rgba(210,229,0,0.8);
+    color: #1D3D59;
+    text-align: center;
+    line-height: 2em;
+    font-family: mont, sans-serif;
+    font-size: 1.2em;
+    z-index: 22;
+}
+.errMsg {
+    position: fixed;
+    top: 2em;
+    left: 0;
+    right: 0;
+    min-width: 20em;
+    max-width: 30em;
+    margin: 0 auto;
+    padding: 1em;
+    border: 2px solid #1D3D59;
+    border-radius: 2px;
+    background-color: rgba(224,45,0,0.9);
+    color: black;
+    text-align: center;
+    line-height: 2em;
+    font-family: mont, sans-serif;
+    font-size: 1.2em;
+    z-index: 22;
+}
+/* END Ausgabe von msg und errMsg */
+
+/*FONTS*/
+@font-face {
+    font-family: mont-bold;
+    src: url("fonts/Montserrat-Bold.ttf");
+}
+@font-face {
+    font-family: mont;
+    src: url("fonts/Montserrat-Regular.ttf");
+}
+@font-face {
+    font-family: lato;
+    src: url("fonts/Lato-Black.ttf");
+}
+@font-face {
+    font-family: lato-bold;
+    src: url("fonts/Lato-Bold.ttf");
+}

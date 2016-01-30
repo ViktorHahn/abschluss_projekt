@@ -1,0 +1,127 @@
+<!-- Nachricht nach erfolgreicher Anmeldung -->
+<span data-ng-show="msg" class="msg">{{ msg }} </span>
+<span class="errMsg" data-ng-if="errMsg">{{ errMsg }}</span>
+
+<!-- Registrierungsformular -->
+<form id="reg-form" data-ng-if="regStatus" class="data-ng-pristin data-ng-valid" name="register_form" data-ng-model-options="{updateOn: 'default blur', debounce:{default: 750, blur: 0 }}" novalidate>
+    <fieldset>
+        <legend>Registrierung</legend>
+        <!-- Benutzername -->
+        <div class="reg_form reg-username" style="position: relative">
+            <label for="uname">Benutzername <span style="color: red">*</span></label>
+            <input type="text"
+                   placeholder="Benutzername..."
+                   id="uname"
+                   name="username"
+                   data-async-unique
+                   data-ng-model="regUser.username"
+                   data-ng-minlength="3"
+                   data-ng-maxlength="20"
+                   data-ng-model-options="{updateOn: 'blur'}"
+                   required>
+            <span data-ng-show="(register_form.username.$dirty && register_form.username.$invalid) || register_form.username.$touched">
+                <span  class="form_message" data-ng-show="register_form.username.$pending">Es wird überprüft ob der Username bereits vergeben ist.</span>
+                <span  class="form_message" data-ng-show="register_form.username.$error.unique">Der Benutzername ist bereits Vergeben.</span>
+                <span  class="form_message" data-ng-show="register_form.username.$error.required">Tragen Sie bitte einen Benutzernamen ein.</span>
+                <span  class="form_message" data-ng-show="register_form.username.$error.minlength">Der Benutzername sollte aus mindestens 3 Buchstaben bestehen.</span>
+                <span  class="form_message" data-ng-show="register_form.username.$error.maxlength">Der Benutzername sollte aus maximal 20 Buchstaben bestehen.</span>
+            </span>
+
+        </div>
+        <div class="form-wrapper">
+            <div class="reg_form form-left" style="position: relative">
+                <label for="pass">Passwort <span style="color: red">*</span></label>
+                <input type="password"
+                       placeholder="Passwort..."
+                       id="pass"
+                       name="password"
+                       data-ng-model="regUser.password"
+                       data-ng-minlength="6"
+                       data-ng-maxlength="20"
+                       required>
+
+                <span data-ng-show="(register_form.password.$dirty && register_form.password.$invalid) || register_form.password.$touched">
+                    <span class="form_msg-short" data-ng-show="register_form.password.$error.required">Tragen Sie bitte einen Passwort ein.</span>
+                    <span class="form_msg-short" data-ng-show="register_form.password.$error.minlength">Das Passwort sollte aus mindestens 6 Zeichen bestehen.</span>
+                    <span class="form_msg-short" data-ng-show="register_form.password.$error.maxlength">Das Passwort sollte aus maximal 20 Zeichen bestehen.</span>
+                    <span class="form_msg-short" data-ng-show="register_form.password.$error.notmatching">Die Passw&ouml;rter stimmen nicht &uuml;berein.</span>
+                </span>
+            </div>
+
+
+            <div class="reg_form form-right">
+                <label for="confpass">Password wiederholen <span style="color: red">*</span></label>
+                <input type="password"
+                       placeholder="Passwort wiederholen... "
+                       id="confpass"
+                       name="confpassword"
+                       data-ng-change="valEquals(register_form.password, register_form.confpassword)"
+                       data-ng-model="regUser.confpassword"
+                       data-ng-minlength="6"
+                       data-ng-maxlength="20"
+                       required>
+                <span data-ng-show="(register_form.confpassword.$dirty && register_form.confpassword.$invalid) || register_form.confpassword.$touched">
+                    <span class="form_msg-short" data-ng-show="register_form.confpassword.$error.required">Bitte wiedeholen Sie Ihr Passwort.</span>
+                    <span class="form_msg-short" data-ng-show="register_form.confpassword.$error.minlength">Das Passwort sollte aus mindestens 6 Zeichen bestehen.</span>
+                    <span class="form_msg-short" data-ng-show="register_form.confpassword.$error.maxlength">Das Passwort sollte aus maximal 20 Zeichen bestehen.</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-wrapper">
+            <div class="reg_form form-left">
+                <label for="mail">Email <span style="color: red">*</span></label>
+                <input type="email"
+                       id="mail" placeholder="Email..."
+                       name="email"
+                       data-async-unique
+                       data-ng-model="regUser.email"
+                       data-ng-model-options="{updateOn: 'blur'}"
+                       required>
+                <span data-ng-show="(register_form.email.$dirty && register_form.email.$invalid) || register_form.email.$touched">
+                    <span class="form_msg-short" data-ng-show="register_form.email.$pending">Es wird überprüft ob die angegebene Emailaddresse  bereits vergeben ist.</span>
+                    <span class="form_msg-short" data-ng-show="register_form.email.$error.unique">Die angegebene Emailaddresse ist bereits Vergeben.</span>
+                    <span class="form_msg-short" data-ng-show="register_form.email.$error.required">Bitte geben Sie Ihre Emailadresse an.</span>
+                    <span class="form_msg-short" data-ng-show="register_form.email.$error.email">Diese Emailadresse ist ung&uuml;ltig.</span>
+                    <span class="form_msg-short" data-ng-show="register_form.email.$error.notmatching">Die Emailadressen stimmen nicht &uuml;berein.</span>
+                </span>
+            </div>
+
+            <!-- Confirm Email -->
+            <div class="reg_form form-right">
+                <label for="confmail">Email wiederholen <span style="color: red">*</span></label>
+                <input type="email" placeholder="Email wiederholen..."
+                       id="confmail"
+                       name="conf_email"
+                       data-ng-model="regUser.conf_email"
+                       data-ng-change="valEquals(register_form.email,register_form.conf_email)"
+                       required>
+                <span data-ng-show="(register_form.conf_email.$dirty && register_form.conf_email.$invalid) || register_form.conf_email.$touched">
+                    <span class="form_msg-short" data-ng-show="register_form.conf_email.$error.required">Wiederholen Sie Ihre Emailadresse.</span>
+                    <span class="form_msg-short" data-ng-show="register_form.conf_email.$error.email">Emailadresse ist ung&uuml;ltig.</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-wrapper">
+            <!-- Checkbox für Rechtsanwälte-->
+            <label for="law">Möchten Sie sich als Rechtsanwältin oder Rechtsanwalt registrieren?
+            <input type="checkbox" id="law" name="lawyer" data-ng-model="regUser.lawyer" data-ng-model-options="{updateOn: 'default', allowInvalid: true}">
+            </label>
+        </div>
+        <!-- Erweiterung des Formulars fuer Rechtsanwaelte in Abhaengigkeit zur oberen Checkbox-->
+        <div data-ng-if="regUser.lawyer" data-ng-include="'main/extRegister.tpl.html'"></div>
+
+        <p>Mit <span style="color:red;">*</span> gekennzeichnete Felder sind Pflichtfelder.</p>
+
+
+
+        <!-- Buttons -->
+        <div class="reg_form form-wrapper">
+            <input class="form_btn " type="button" value="Zur&uuml;cksetzen" data-ng-click="clearForm(register_form)">
+            <input class="form_btn" type="button" data-ng-click="addUser(regUser, register_form)" data-ng-disabled="register_form.$invalid || register_form.$pending" value="Registrieren">
+        </div>
+
+    </fieldset>
+</form>

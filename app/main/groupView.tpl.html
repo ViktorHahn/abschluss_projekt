@@ -1,0 +1,158 @@
+<!-- Info Nachrichten -->
+<span class="msg" data-ng-if="msg">{{ msg }}</span>
+
+<!-- Ansicht einer spezifischen Gruppe -->
+<section>
+
+    <!-- Ausgabe der Gruppe -->
+    <article class="group-view">
+        <div>
+            <!-- Gruppenname, creator & time -->
+            <section class="grp-left">
+                <div>
+                    <h1 class="cgroup-name">{{grp.name}}</h1>
+                </div>
+                <div>
+                    <h2 class="tag-h">Tag</h2>
+                    <p class="group-tag">{{grp.tag}}</p>
+                </div>
+                <div>
+                    <h2 class="creator-h">Erstellt durch:</h2>
+                    <p class="creator-data">{{ grp.creator }}   {{ grp.timestamp*1000 | date : 'dd.MM.yyyy HH:mm' }}</p>
+                </div>
+            </section>
+            <!-- Gegenpartei -->
+            <section class="grp-right">
+                <div>
+                    <h1 class="cgroup-name">{{grp.cname}} {{grp.businessform}}</h1>
+                </div>
+                <div class="addr">
+                    <h2>Anschrift</h2>
+                    <p>{{grp.street}} {{grp.housenr}}</p>
+                    <p>{{grp.zip}} {{grp.domicile}}</p>
+                </div>
+
+            </section>
+        </div>
+        <!-- Gruppenbeschreibung -->
+        <section class="desc" data-ng-form="desc">
+            <h2>Beschreibung</h2>
+            <p name="text"
+               data-creator="{{grp.creatorID}}"
+               data-user="{{user.uid}}"
+               data-strip-br="true"
+               data-ng-model="grp.description"
+               data-ng-transclude
+               data-editable-by-uid
+               data-ng-minlength="20"
+               data-ng-maxlength="350"
+               required>{{grp.description}}</p>
+        </section>
+
+        <!--todo Validierung einarbeiten-->
+        <div class="breit" data-ng-if="grp.creator == user.uid || user.credits == 2">
+            <!-- Delete-Btn -->
+            <input class="form_btn btn-delete"
+                   type="button"
+                   title="Gruppe löschen."
+                   data-ng-if="grp.creator == user.uid || user.credits == 2" data-ng-click="deleteGrp()"
+                   value="Gruppe löschen">
+            <!-- Update-Btn -->
+            <input class="form_btn btn-update"
+                   type="button" data-ng-if="grpEdited"
+                   data-ng-click="updateGrp()"
+                   data-ng-disabled="description.$invalid"
+                   value="Änderungen speichern">
+        </div>
+
+        <!-- Confirmfeld fuer das Loeschen der Gruppe-->
+        <div class="confirm-delete" data-ng-show="delGrpFlag">
+            <div class="delete-view">
+                <p>Sind Sie sicher, dass Sie diese Streitgruppe löschen wollen?</p>
+                <input class="form_btn"
+                       type="button"
+                       value="Löschen"
+                       data-ng-click="delGrp = true; delGrpFlag = false">
+                <input class="form_btn"
+                       type="button"
+                       value="Abbrechen"
+                       data-ng-click="delGrp = false; delGrpFlag = false">
+            </div>
+        </div>
+    </article>
+
+
+
+    <!-- Ausgabe der Nachrichten -->
+    <section class="discussion"
+             data-ng-if="posts">
+
+        <h2>Gruppendiskussion</h2>
+        <p data-ng-if="noPost">{{noPost}}</p>
+        <!-- Info Anzeige, dass man sich einloggen muss, um Diskussion zu sehen -->
+        <p data-ng-if="!user.uid">Bitte <a href="#/login">einloggen</a>, wenn Sie sich an der Diskussion beteiligen m&ouml;chten.</p>
+        <!-- todo: beitrag speichern btn erscheint bei allen beiträgen-->
+        <article class="post"
+                 data-ng-repeat="post in posts | orderBy: '-time' track by $index">
+            <p class="message"
+               data-ng-change="update(post)"
+               data-creator="{{post.userID}}"
+               data-user="{{user.uid}}"
+               data-strip-br="true"
+               data-ng-model="post.message"
+               data-ng-transclude
+               data-editable-by-uid>{{post.message}}</p>
+            <div class="schmal">
+                <p class="left-p">von: {{post.username}}</p>
+                <p class="right-p">am : {{post.time*1000 | date : 'dd.MM.yyyy HH:mm'}}</p>
+            </div>
+
+            <div class="breit" data-ng-if="post.userID == user.uid || user.credits == 2">
+                <input class="form_btn btn-delete" type="button"
+                       data-ng-if="post.userID == user.uid || user.credits == 2"
+                       data-ng-click="deletePost(post)"
+                       value="Beitrag Löschen">
+                <input class="form_btn btn-update" type="button"
+                       data-ng-if="post.updatedFlag && (post.userID == user.uid || user.credits == 2)"
+                       data-ng-click="updatePost(post)"
+                       value="Änderungen speichern.">
+            </div>
+            <!-- Bestaettigung des Loeschvorgangs-->
+            <div class="confirm-delete" data-ng-show="post.delPostFlag">
+                <div class="delete-view">
+                    <p>Sind Sie sicher, dass Sie diesen Beitrag löschen wollen?</p>
+                    <input class="form_btn" type="button" value="Löschen" data-ng-click="post.delPost=true; post.delPostFlag=false">
+                    <input class="form_btn" type="button" value="Abbrechen" data-ng-click="post.delPost=false; post.delPostFlag=false">
+                </div>
+            </div>
+
+        </article>
+    </section>
+
+    <section class="new-post" data-ng-if="user.uid">
+        <p>Verfassen Sie einen Beitrag.</p>
+        <form name="new_post"
+              data-ng-model="nPost"
+              class="data-ng-pristin data-ng-valid"
+              novalidate>
+            <textarea class="create-post"
+                      placeholder="Beteiligen Sie sich an der Diskussion ..."
+                      data-ng-model="nPost.message"
+                      data-ng-maxlength="300"
+                      required></textarea>
+            <!-- Validierungsnachrichten -->
+            <div>
+                <span data-ng-show="(new_post.message.$dirty && new_post.message.$invalid) || new_post.message.$touched">
+                    <span class="form_message" data-ng-show="new_post.message.$error.required">Sie müssen eine Nachricht eintragen.</span>
+                    <span class="form_message" data-ng-show="new_post.message.$error.maxlength">Die Nachricht darf nicht länger als 300 Zeichen lang sein.</span>
+                </span>
+            </div>
+            <input class="form_btn btn-update"
+                   type="button"
+                   value="Abschicken"
+                   data-ng-click="createPost(new_post, nPost.message)"
+                   data-ng-disabled="new_post.$invalid">
+        </form>
+    </section>
+</section>
+<!--todo Fehlermeldung wenn keine Beiträge beseitigen-->

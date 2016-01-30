@@ -1,0 +1,158 @@
+<!-- Anrede -->
+<div class="form-wrapper">
+    <div class="reg_form form-left">
+        <label for="gen">Anrede <span style="color: red">*</span></label>
+        <select id="gen"
+                name="gender"
+                data-ng-model="regUser.gender"
+                required>
+            <option value="" default selected>Anrede</option>
+            <option value="Frau">Frau</option>
+            <option value="Herr">Herr</option>
+        </select>
+        <span data-ng-show="(register_form.gender.$dirty && register_form.gender.$invalid) || register_form.gender.$touched">
+            <span class="form_msg-short" data-ng-show="register_form.gender.$error.required">Bitte Anrede angeben.</span>
+        </span>
+    </div>
+
+    <!-- Titel -->
+    <div class="reg_form form-right">
+        <label for="tle">Titel</label>
+        <input type="text"
+               placeholder="Titel..."
+               id="tle"
+               name="title"
+               data-ng-model="regUser.title"
+               data-ng-minlength="3">
+        <span data-ng-show="(register_form.title.$dirty && register_form.title.$invalid) || register_form.title.$touched">
+            <span class="form_msg-short" data-ng-show="register_form.title.$error.minlength">Ihr Titel sollte aus mindestens 2 Buchstaben bestehen.</span>
+        </span>
+    </div>
+</div>
+<div class="form-wrapper">
+    <!-- Nachname -->
+    <div class="reg_form form-left">
+        <label for="lname">Nachname <span style="color: red">*</span></label>
+        <input type="text" placeholder="Nachname..."
+               id="lname"
+               name="lastname"
+               data-ng-model="regUser.lastname"
+               data-ng-minlength="3"
+               required>
+            <span data-ng-show="(register_form.lastname.$dirty && register_form.lastname.$invalid) || register_form.lastname.$touched">
+                <span class="form_msg-short" data-ng-show="register_form.lastname.$error.required">Bitte tragen Sie Ihren Nachnamen ein.</span>
+                <span class="form_msg-short" data-ng-show="register_form.lastname.$error.minlength">Der Nachname sollte aus mindestens 3 Buchstaben bestehen.</span>
+            </span>
+    </div>
+
+    <!-- Vorname -->
+    <div class="reg_form form-right">
+        <label for="fname">Vorname <span style="color: red">*</span></label>
+        <input type="text" placeholder="Vorname..."
+               id="fname"
+               name="firstname"
+               data-ng-model="regUser.firstname"
+               data-ng-minlength="3"
+               required>
+        <span data-ng-show="(register_form.firstname.$dirty && register_form.firstname.$invalid) || register_form.firstname.$touched">
+            <span class="form_msg-short" data-ng-show="register_form.firstname.$error.required">Bitte tragen Sie Ihren Vornamen ein.</span>
+            <span class="form_msg-short" data-ng-show="register_form.firstname.$error.minlength">Der Vorname sollte aus mindestens 3 Buchstaben bestehen.</span>
+        </span>
+    </div>
+</div>
+<div class="form-wrapper">
+<!-- Straße -->
+    <div class="reg_form form-left">
+        <label for="str">Straße <span style="color: red">*</span></label>
+        <input type="text"
+               placeholder="Straße..."
+               id="str"
+               name="street"
+               data-ng-model="regUser.street"
+               data-ng-minlength="3"
+               required>
+
+        <span data-ng-show="(register_form.street.$dirty && register_form.street.$invalid) || register_form.street.$touched">
+            <span class="form_msg-short" data-ng-show="register_form.street.$error.required">Bitte tragen Sie Ihre Straße ein.</span>
+            <span class="form_msg-short" data-ng-show="register_form.street.$error.minlength">Die Straße sollte aus mindestens 3 Buchstaben bestehen.</span>
+        </span>
+    </div>
+
+    <!-- Hausenummer-->
+    <div class="reg_form form-right">
+        <label for="hnr">Hausnummer <span style="color: red">*</span></label>
+        <input type="text"
+               placeholder="Hausnummer..."
+               id="hnr"
+               name="housenr"
+               data-ng-model="regUser.housenr"
+               data-ng-minlength="1"
+               required>
+        <span data-ng-show="(register_form.housenr.$dirty && register_form.housenr.$invalid) || register_form.housenr.$touched">
+            <span class="form_msg-short" data-ng-show="register_form.housenr.$error.required">Bitte tragen Sie die Hausnummer ein.</span>
+            <span class="form_msg-short" data-ng-show="register_form.housenr.$error.minlength">Die Hausnummer sollte aus mindestens einem Zeichen bestehen.</span>
+        </span>
+    </div>
+</div>
+<div class="form-wrapper">
+    <!-- Wohnort-->
+    <div class="reg_form form-left">
+        <label for="ort">Ort <span style="color: red">*</span></label>
+        <input type="text" placeholder="Ort..."
+               id="ort"
+               name="domicile"
+               data-ng-model="regUser.domicile"
+               data-ng-minlength="3"
+               required>
+        <span data-ng-show="(register_form.domicile.$dirty && register_form.domicile.$invalid) || register_form.domicile.$touched">
+            <span class="form_msg-short" data-ng-show="register_form.domicile.$error.required">Bitte tragen Sie den Ort ein.</span>
+            <span class="form_msg-short" data-ng-show="register_form.domicile.$error.minlength">Der Ort sollte aus mindestens 3 Buchstaben bestehen.</span>
+        </span>
+    </div>
+
+    <!-- PLZ-->
+    <div class="reg_form form-right">
+        <label for="ZIP">PLZ <span style="color: red">*</span></label>
+        <input type="text"
+               placeholder="PLZ"
+               id="ZIP"
+               name="zip"
+               data-ng-model="regUser.zip"
+               data-ng-minlength="5"
+               required>
+        <span data-ng-show="(register_form.zip.$dirty && register_form.zip.$invalid) || register_form.zip.$touched">
+            <span class="form_msg-short" data-ng-show="register_form.zip.$error.required">Bitte tragen Sie die Postleitzahl ein.</span>
+            <span class="form_msg-short" data-ng-show="register_form.zip.$error.minlength">Die Postleitzahl sollte aus mindestens 5 Zeichen bestehen.</span>
+        </span>
+    </div>
+</div>
+<div class="form-wrapper">
+    <!-- Telefon-->
+    <div class="reg_form form-left">
+        <label for="fon">Telefon <span style="color: red">*</span></label>
+        <input type="text"
+               placeholder="Telefon..."
+               id="fon"
+               name="phone"
+               data-ng-model="regUser.phone"
+               data-ng-minlength="5" required>
+        <span data-ng-show="(register_form.phone.$dirty && register_form.phone.$invalid) || register_form.phone.$touched">
+            <span class="form_msg-short" data-ng-show="register_form.phone.$error.required">Bitte tragen Sie Ihre Telefonnummer ein.</span>
+            <span class="form_msg-short" data-ng-show="register_form.phone.$error.minlength">Die Telefonnummer sollte aus mindestens 5 Zahlen bestehen.</span>
+        </span>
+    </div>
+
+    <!-- Kanzlei-->
+    <div class="reg_form form-right">
+        <label for="off">Kanzlei</label>
+        <input type="text"
+               placeholder="Kanzlei..."
+               id="off"
+               name="office"
+               data-ng-model="regUser.office"
+               data-ng-minlength="3">
+        <span data-ng-show="(register_form.office.$dirty && register_form.office.$invalid) || register_form.office.$touched">
+            <span class="form_msg-short" data-ng-show="register_form.office.$error.minlength">Der Knzleiname sollte aus mindestens 3 Buchstaben bestehen.</span>
+        </span>
+    </div>
+</div>

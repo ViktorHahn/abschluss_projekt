@@ -1,0 +1,184 @@
+<p data-ng-show="msg" class="msg">{{ msg }} </p>
+
+<form data-ng-if="newGroupStatus" name="createGroup" class="data-ng-pristin data-ng-valid" data-ng-model="newGroup" data-ng-model-options="{updateOn: 'default blur', debounce:{default: 750, blur: 0 }}" novalidate>
+    <fieldset>
+        <legend>Erstellen Sie eine neue Streitgruppe</legend>
+
+        <div class="form">
+            <!-- Gruppenname -->
+            <div class="form_raw">
+                <label for="gname">Geben Sie Ihrer Streitgruppe einen Namen <span class="required-red">*</span></label>
+                <input type="text" id="gname"
+                       name="groupName"
+                       placeholder="W&auml;len Sie einen Namen"
+                       data-ng-model="newGroup.name"
+                       data-ng-minlength="5"
+                       data-ng-maxlength="20"
+                       required>
+
+                <span data-ng-show="(createGroup.groupName.$dirty && createGroup.groupName.$invalid) || createGroup.groupName.$touched">
+                    <span class="form_message" data-ng-show="createGroup.groupName.$error.minlength">Der Gruppenname sollte aus mindestens 5 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="createGroup.groupName.$error.maxlength">Der Gruppenname sollte aus maximal 20 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="createGroup.groupName.$error.required">Tragen Sie bitte einen Gruppennamen ein.</span>
+                </span>
+
+            </div>
+
+            <!-- Gruppenbeschreibung -->
+            <div class="form_raw">
+                <label for="description">Bitte beschreiben Sie den Grund, weshalb Sie sich im Streit mit der Gegenpartei befinden. <span class="required-red">*</span></label>
+                <textarea   id="description" name="groupDescription" placeholder="Beschreiben Sie den Zweck der Gruppe ..."
+                            data-ng-model="newGroup.description"
+                            data-ng-minlength="20"
+                            data-ng-maxlength="150"
+                            required></textarea>
+
+                <span data-ng-show="(createGroup.groupDescription.$dirty && createGroup.groupDescription.$invalid) || createGroup.groupDescription.$touched">
+                    <span class="form_message" data-ng-show="createGroup.groupDescription.$error.minlength">Der Gruppenname sollte aus mindestens 20 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="createGroup.groupDescription.$error.maxlength">Der Gruppenname sollte aus maximal 150 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="createGroup.groupDescription.$error.required">Beschreiben Sie wogegen diese Gruppe streitet.</span>
+                </span>
+            </div>
+
+            <h2>Angaben zum Gegner</h2>
+            <!-- Gegner -->
+            <div class="form_raw">
+                <label for="cParty">Wie ist der Name der Partei gegen die Sie streiten? <span class="required-red">*</span></label>
+                <input type="text"
+                       id="cParty"
+                       name="counterParty"
+                       placeholder="Geben Sie die Gegenpartei an ..."
+                       data-ng-model="newGroup.counterParty"
+                       data-ng-minlength="3"
+                       data-ng-maxlength="30"
+                       required>
+
+                <span data-ng-show="(createGroup.counterParty.$dirty && createGroup.counterParty.$invalid) || createGroup.counterParty.$touched">
+                    <span class="form_message" data-ng-show="createGroup.counterParty.$error.minlength">Der Name der Gegenpartei sollte aus mindestens 3 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="createGroup.counterParty.$error.maxlength">Der Name der Gegenpartei sollte aus maximal 30 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="createGroup.counterParty.$error.required">Tragen Sie bitte einen Namen der Gegenpartei ein.</span>
+                </span>
+            </div>
+
+            <!-- Geschaeftsform -->
+            <div class="form_raw">
+                <label for="bform">Welcher Gesch&auml;ftsform geh&ouml;rt die Gegenpartei an? - z.B. GmbH oder AG</label>
+                <input type="text"
+                       id="bform"
+                       name="businessform"
+                       placeholder="GmbH, AG, GbR ..."
+                       data-ng-model="newGroup.businessform"
+                       data-ng-minlength="2"
+                       data-ng-maxlength="10">
+
+                <span data-ng-show="(createGroup.businessform.$dirty && createGroup.businessform.$invalid) || createGroup.businessform.$touched">
+                    <span class="form_message" data-ng-show="createGroup.businessform.$error.minlength">Die Gesch&auml;ftsform sollte aus mindestens 2 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="createGroup.businessform.$error.maxlength">Die Gesch&auml;ftsform sollte aus maximal 10 Buchstaben bestehen.</span>
+                </span>
+            </div>
+
+            <!-- Straße -->
+
+            <div class="form_raw">
+                <label for="str">Stra&szlig;e  <span class="required-red">*</span></label>
+                <input type="text"
+                       id="str"
+                       name="street"
+                       placeholder="Stra&szlig;e ..."
+                       data-ng-model="newGroup.street"
+                       data-ng-minlength="3"
+                       required>
+
+                <span data-ng-show="(createGroup.street.$dirty && createGroup.street.$invalid) || createGroup.street.$touched">
+                    <span class="form_message" data-ng-show="createGroup.street.$error.required">Bitte tragen Sie Ihre Stra&szlig;e ein.</span>
+                    <span class="form_message" data-ng-show="createGroup.street.$error.minlength">Die Stra&szlig;e sollte aus mindestens 3 Buchstaben bestehen.</span>
+                </span>
+            </div>
+
+            <!-- Hausenummer-->
+            <div class="form_raw">
+                <label for="hnr">Hausnummer <span class="required-red">*</span></label>
+                <input type="text"
+                       id="hnr"
+                       name="housenr"
+                       placeholder="Hausnummer ..."
+                       data-ng-model="newGroup.housenr"
+                       data-ng-minlength="1"
+                       required>
+
+                <span data-ng-show="(createGroup.housenr.$dirty && createGroup.housenr.$invalid) || createGroup.housenr.$touched">
+                    <span class="form_message" data-ng-show="createGroup.housenr.$error.required">Bitte tragen Sie die Hausnummer ein.</span>
+                    <span class="form_message" data-ng-show="createGroup.housenr.$error.minlength">Die Hausnummer sollte aus mindestens einem Zeichen bestehen.</span>
+                </span>
+            </div>
+
+
+            <!-- Anschrift der Gegenpartei -->
+            <div class="form_raw">
+                <label for="ort">Ort  <span class="required-red">*</span></label>
+                <input type="text"
+                       id="ort"
+                       name="domicile"
+                       placeholder="Ort ..."
+                       data-ng-model="newGroup.domicile"
+                       data-ng-minlength="3"
+                       required>
+
+                <span data-ng-show="(createGroup.domicile.$dirty && createGroup.domicile.$invalid) || createGroup.domicile.$touched">
+                    <span class="form_message" data-ng-show="createGroup.domicile.$error.required">Bitte tragen Sie den Ort ein.</span>
+                    <span class="form_message" data-ng-show="createGroup.domicile.$error.minlength">Der Ort sollte aus mindestens 3 Buchstaben bestehen.</span>
+                </span>
+            </div>
+
+            <!-- PLZ-->
+            <div class="form_raw">
+                <label for="ZIP">PLZ <span class="required-red">*</span></label>
+                <input type="text"
+                       id="ZIP"
+                       name="zip"
+                       placeholder="Postleitzahl ..."
+                       data-ng-model="newGroup.zip"
+                       data-ng-minlength="5"
+                       required>
+
+                <span data-ng-show="(createGroup.zip.$dirty && createGroup.zip.$invalid) || createGroup.zip.$touched">
+                    <span class="form_message" data-ng-show="createGroup.zip.$error.required">Bitte tragen Sie die Postleitzahl ein.</span>
+                    <span class="form_message" data-ng-show="createGroup.zip.$error.minlength">Die Postleitzahl sollte aus mindestens 5 Zeichen bestehen.</span>
+                </span>
+            </div>
+
+            <!-- TAGS -->
+            <div class="form_raw">
+                <label for="gTags"> W&auml;hlen Sie einen Tag f&uuml;r Ihre Streitgruppe aus. <span class="required-red">*</span></label>
+                <select name="tags"
+                        id="gTags"
+                        data-ng-model="newGroup.tags"
+                        required>
+                    <option value="" selected>W&auml;hlen Sie einen Tag ...</option>
+                    <option value="Arbeitsrecht">Arbeitsrecht</option>
+                    <option value="Baurecht">Baurecht</option>
+                    <option value="Mietrecht">Mietrecht</option>
+                    <option value="Versicherungsrecht">Versicherungsrecht</option>
+                    <option value="Vertragsrecht">Vertragsrecht</option>
+                </select>
+
+                <span data-ng-show="(createGroup.tags.$dirty && createGroup.tags.$invalid) || createGroup.tags.$touched">
+                    <span class="form_message" data-ng-show="createGroup.tags.$error.required">Bitte w&auml;hlen Sie mindestens einen Tag aus.</span>
+                </span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="form_raw">
+                <input class="form_btn"
+                       type="button"
+                       value="Zur&uuml;cksetzen" data-ng-click="clearForm(createGroup)">
+                <input class="form_btn"
+                       type="submit"
+                       data-ng-click="addGroup(newGroup, createGroup)"
+                       data-ng-disabled="createGroup.$invalid"
+                       value="Streitgruppe erstellen">
+            </div>
+        </div>
+
+    </fieldset>
+</form>

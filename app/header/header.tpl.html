@@ -1,0 +1,50 @@
+<!-- Logo von dJury -->
+<section class="logo">
+    <a href="#/"><img id="logo" src="pictures/logo_test.svg" alt="Das Logo der Plattform dJury." width="" height="70px"></a>
+    <h1 id="subheading">David gegen Goliath</h1>
+</section>
+
+<!-- Suchfeld -->
+<section class="search-nav">
+    <div class="nav-wrapper">
+        <!--    Suchfeld  -->
+        <form class="search-Form"
+              data-ng-model="srch"
+              novalidate>
+            <label>
+                <select name="select-tag"
+                        data-ng-model="srch.tag">
+                    <option value="" default selected>Stichwort</option>
+                    <option value="Arbeitsrecht">Arbeitsrecht</option>
+                    <option value="Baurecht">Baurecht</option>
+                    <option value="Mietrecht">Mietrecht</option>
+                    <option value="Versicherungsrecht">Versicherungsrecht</option>
+                    <option value="Vertragsrecht">Vertragsrecht</option>
+                </select>
+            </label>
+            <input type="search"
+                   name="searchTerm"
+                   placeholder="Suchen ..."
+                   data-ng-model="srch.term"
+                   required>
+            <input type="submit" data-ng-disabled="searchForm.$valid" data-ng-click="sendOn()" value=" ">
+        </form>
+        <!-- Hauptnavigation -->
+
+        <nav data-ng-click="toggle()">
+            <!--ngIf blendet Streitgruppe erstellen ein oder aus, wenn der user ein-/ausgelogt ist-->
+            <ul data-ng-show="menuToggle" data-ng-mouseleave="toggle()" class="navigation ng-show">
+                <li class="nav-item" id="home"><a href="#/">Home</a></li>
+                <li class="nav-item" id="groups"><a href="#/groups">Streitgruppen</a></li>
+                <li class="nav-item" id="lawyers"><a href="#/lawyers">Rechtsanwälte</a></li>
+                <li class="nav-item" id="add-group"><a data-ng-if="user.uid" href="#/createGroup">Streitgruppe erstellen</a></li>
+                <li class="nav-item" id="login" data-ng-if="!user.uid"><a href="#/login">Anmelden</a></li>
+                <li class="nav-item" id="logout" data-ng-if="user.uid"><a href="" data-ng-click="logout()">Abmelden</a></li>
+                <li class="nav-item" id="profile" data-ng-if="user.uid"><a href="#/user/{{user.username}}">Profil</a></li>
+                <li class="nav-item" id="impressum"><a href="#/impressum">Impressum</a></li>
+                <li class="nav-item" id="contact"><a href="#/contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+

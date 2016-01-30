@@ -1,0 +1,54 @@
+<!-- Nachricht nach erfolgreicher Anmeldung -->
+<span data-ng-show="msg" class="msg">{{ msg }}</span>
+<span class="errMsg" data-ng-if="errMsg">{{ errMsg }}</span>
+
+<!-- Loginformular-->
+<form id="log-form" data-ng-hide="regSuccess" class="data-ng-pristin data-ng-valid" name="form" data-ng-model-options="{updateOn: 'default blur', debounce:{default: 750, blur: 0 }}" novalidate>
+    <fieldset>
+        <legend>Bitte loggen Sie sich ein</legend>
+
+        <!-- Benutzername -->
+        <div class="login_form">
+            <label for="uname">Benutzername oder Email <span style="color: red">*</span></label>
+            <input type="text" placeholder="Benutzername..."
+                   id="uname"
+                   name="username"
+                   data-ng-change="setLogErr()"
+                   data-ng-model="userLog.username"
+                   data-ng-minlength="3"
+                   data-ng-maxlength="10"
+                   required>
+            <span class="msg_anchor" data-ng-show="(form.username.$dirty && form.username.$invalid) || form.username.$touched">
+                <span class="login_message" data-ng-show="form.username.$error.required">Tragen Sie bitte einen Benutzernamen ein.</span>
+                <span class="login_message" data-ng-show="form.username.$error.minlength">Der Benutzername sollte aus mindestens 3 Buchstaben bestehen.</span>
+            </span>
+        </div>
+
+        <!-- Passwort -->
+        <div class="login_form">
+            <label for="pass">Passwort <span style="color: red">*</span></label>
+            <input type="password" placeholder="Passwort..."
+                   id="pass"
+                   name="password"
+                   data-ng-change="setLogErr()"
+                   data-ng-model="userLog.password"
+                   data-ng-minlength="6"
+                   data-ng-maxlength="20"
+                   required>
+            <span class="anchor" data-ng-if="(form.password.$dirty && form.password.$invalid) || form.password.$touched">
+                <span class="login_message" data-ng-if="form.password.$error.required">Tragen Sie bitte einen Passwort ein.</span>
+                <span class="login_message" data-ng-if="form.password.$error.minlength">Das Passwort sollte aus mindestens 6 Zeichen bestehen.</span>
+                <span class="login_message" data-ng-if="form.password.$error.maxlength">Das Passwort sollte aus maximal 20 Zeichen bestehen.</span>
+            </span>
+        </div>
+
+        <!--Feld zur Messageausgabe -->
+        <span data-ng-show="form.$error.logerr"> {{ errMsg }}</span>
+        <!-- Buttons -->
+
+        <input class="form_btn" type="button" data-ng-click="login(userLog, form)" data-ng-disabled="form.$invalid" value="Login">
+        <p>Besitzen Sie noch keine Anmeldedaten? Registrieren Sie sich jetzt.</p>
+        <a href="#/registrieren"><input class="form_btn" type="button" value="Registrieren"></a>
+
+    </fieldset>
+</form>

@@ -1,0 +1,29 @@
+<!-- Darstellung der Gruppen -->
+<section class="grp-overview">
+    <article class="short-grps" data-ng-repeat="grp in grps">
+        <section class="group">
+            <div>
+                <h2 class="group-name">{{grp.name}}</h2>
+            </div>
+            <div>
+                <h2 class="tag-h">Tag:</h2>
+                <p class="group-tag">{{grp.tag}}</p>
+            </div>
+        </section>
+        <section class="cgroup">
+            <div>
+                <h1 class="cgroup-name">{{grp.cname}}</h1>
+            </div>
+            <div>
+                <h2 class="addr-h">In:</h2>
+                <p class="cgroup-addr">{{grp.zip}} {{grp.domicile}}</p>
+            </div>
+        </section>
+        <section>
+            <h2 class="desc-h">Beschreibung:</h2>
+            <p class="group-description">{{grp.description}}</p>
+        </section>
+        <a href="#/group/{{grp.grpID}}" class="form_btn">Gruppe ansehen</a>
+
+    </article>
+</section>
