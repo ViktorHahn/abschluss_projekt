@@ -11,6 +11,7 @@ if(!isset($_SESSION['XSRF'])){
 <html data-ng-app="djury" data-ng-controller="appCtrl">
 <head lang="de">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=2">
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <title>djury - Davids gegen Goliath</title>
 </head>

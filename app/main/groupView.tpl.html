@@ -54,7 +54,7 @@
             <!-- Delete-Btn -->
             <input class="form_btn btn-delete"
                    type="button"
-                   title="Gruppe löschen."
+                   title="Gruppe l&ouml;schen."
                    data-ng-if="grp.creator == user.uid || user.credits == 2" data-ng-click="deleteGrp()"
                    value="Gruppe löschen">
             <!-- Update-Btn -->
@@ -62,7 +62,7 @@
                    type="button" data-ng-if="grpEdited"
                    data-ng-click="updateGrp()"
                    data-ng-disabled="description.$invalid"
-                   value="Änderungen speichern">
+                   value="&Auml;nderungen speichern">
         </div>
 
         <!-- Confirmfeld fuer das Loeschen der Gruppe-->
@@ -111,17 +111,17 @@
                 <input class="form_btn btn-delete" type="button"
                        data-ng-if="post.userID == user.uid || user.credits == 2"
                        data-ng-click="deletePost(post)"
-                       value="Beitrag Löschen">
+                       value="Beitrag L&ouml;schen">
                 <input class="form_btn btn-update" type="button"
                        data-ng-if="post.updatedFlag && (post.userID == user.uid || user.credits == 2)"
                        data-ng-click="updatePost(post)"
-                       value="Änderungen speichern.">
+                       value="&Auml;nderungen speichern.">
             </div>
             <!-- Bestaettigung des Loeschvorgangs-->
             <div class="confirm-delete" data-ng-show="post.delPostFlag">
                 <div class="delete-view">
-                    <p>Sind Sie sicher, dass Sie diesen Beitrag löschen wollen?</p>
-                    <input class="form_btn" type="button" value="Löschen" data-ng-click="post.delPost=true; post.delPostFlag=false">
+                    <p>Sind Sie sicher, dass Sie diesen Beitrag l&ouml;schen wollen?</p>
+                    <input class="form_btn" type="button" value="L&ouml;schen" data-ng-click="post.delPost=true; post.delPostFlag=false">
                     <input class="form_btn" type="button" value="Abbrechen" data-ng-click="post.delPost=false; post.delPostFlag=false">
                 </div>
             </div>
@@ -143,8 +143,8 @@
             <!-- Validierungsnachrichten -->
             <div>
                 <span data-ng-show="(new_post.message.$dirty && new_post.message.$invalid) || new_post.message.$touched">
-                    <span class="form_message" data-ng-show="new_post.message.$error.required">Sie müssen eine Nachricht eintragen.</span>
-                    <span class="form_message" data-ng-show="new_post.message.$error.maxlength">Die Nachricht darf nicht länger als 300 Zeichen lang sein.</span>
+                    <span class="form_message" data-ng-show="new_post.message.$error.required">Sie m&uuml;ssen eine Nachricht eintragen.</span>
+                    <span class="form_message" data-ng-show="new_post.message.$error.maxlength">Die Nachricht darf nicht l&auml;nger als 300 Zeichen lang sein.</span>
                 </span>
             </div>
             <input class="form_btn btn-update"

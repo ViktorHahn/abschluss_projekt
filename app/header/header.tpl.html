@@ -14,7 +14,7 @@
             <label>
                 <select name="select-tag"
                         data-ng-model="srch.tag">
-                    <option value="" default selected>Stichwort</option>
+                    <option value="" selected>Stichwort</option>
                     <option value="Arbeitsrecht">Arbeitsrecht</option>
                     <option value="Baurecht">Baurecht</option>
                     <option value="Mietrecht">Mietrecht</option>
@@ -36,13 +36,12 @@
             <ul data-ng-show="menuToggle" data-ng-mouseleave="toggle()" class="navigation ng-show">
                 <li class="nav-item" id="home"><a href="#/">Home</a></li>
                 <li class="nav-item" id="groups"><a href="#/groups">Streitgruppen</a></li>
-                <li class="nav-item" id="lawyers"><a href="#/lawyers">Rechtsanwälte</a></li>
+                <li class="nav-item" id="lawyers"><a href="#/lawyers">Rechtsanw&aumllte</a></li>
                 <li class="nav-item" id="add-group"><a data-ng-if="user.uid" href="#/createGroup">Streitgruppe erstellen</a></li>
                 <li class="nav-item" id="login" data-ng-if="!user.uid"><a href="#/login">Anmelden</a></li>
                 <li class="nav-item" id="logout" data-ng-if="user.uid"><a href="" data-ng-click="logout()">Abmelden</a></li>
                 <li class="nav-item" id="profile" data-ng-if="user.uid"><a href="#/user/{{user.username}}">Profil</a></li>
                 <li class="nav-item" id="impressum"><a href="#/impressum">Impressum</a></li>
-                <li class="nav-item" id="contact"><a href="#/contact">Kontakt</a></li>
             </ul>
         </nav>
     </div>

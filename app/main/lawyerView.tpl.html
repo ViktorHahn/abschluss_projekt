@@ -5,188 +5,189 @@
 <!-- Ausgabe von Server Nachrichten-->
 <span class="msg" data-ng-show="msg">{{msg}}</span>
 <span class="errMsg" data-ng-if="errMsg">{{ errMsg }}</span>
-<!-- View fuer einen spezifischen Anwalts-->
-<article>
+<!-- View fuer einen spezifischen Anwalt-->
+<article class="law-view">
     <section>
+        <!-- Delete-Btn -->
+        <input class="form_btn del-profile" type="button" data-ng-if="lawyer.userID == user.uid || user.credits == 2" data-ng-click="deleteLawyerByID()" value="Profil Löschen">
+
+
         <!-- Die Validierung von Inhalten, der contenteditable-Attribute, ist über die Direktive ngForm realisiert -->
-       <section data-ng-form="editForm">
+        <article class="law-info" data-ng-form="editForm">
             <h1>Name:</h1>
             <p>{{lawyer.gender}}</p>
             <!--das name-Attribunt ist im p-Element nicht erlaubt. Ist jedoch fuer die Validierung noetig -->
-            <p name="title"
-               data-ng-minlength="2"
-               data-ng-if="lawyer.title"
-               data-creator="lawyer.userID"
-               data-user="user.uid"
-               data-srip-br="true"
-               data-ng-model="lawyer.title"
-               data-ng-transclude
-               data-editable-by-uid
-               required> {{lawyer.title}}</p>
+            <div class="msg_wrapper">
+                <p name="title"
+                   data-ng-minlength="2"
+                   data-ng-if="lawyer.title"
+                   data-creator="lawyer.userID"
+                   data-user="user.uid"
+                   data-srip-br="true"
+                   data-ng-model="lawyer.title"
+                   data-ng-transclude
+                   data-editable-by-uid
+                   required> {{lawyer.title}}</p>
 
-            <!--Hier wird die Fehlermeldung fuer name="title" ausgeloest-->
-            <span data-ng-show="(editForm.title.$dirty && editForm.title.$invalid) || editForm.title.$touched">
-                <span class="form_message" data-ng-show="editForm.title.$error.minlength">Ihr Titel sollte aus mindestens 2 Buchstaben bestehen.</span>
-            </span>
+                <!--Hier wird die Fehlermeldung fuer name="title" ausgeloest-->
+                <span data-ng-show="(editForm.title.$dirty && editForm.title.$invalid) || editForm.title.$touched">
+                    <span class="form_message" data-ng-show="editForm.title.$error.minlength">Ihr Titel sollte aus min. 2 Buchstaben bestehen.</span>
+                </span>
+            </div>
+            <div class="msg_wrapper">
+                <p name="lastname"
+                   data-ng-minlength="3"
+                   data-creator="lawyer.userID"
+                   data-user="user.uid"
+                   data-srip-br="true"
+                   data-ng-model="lawyer.lastname"
+                   data-ng-transclude
+                   data-editable-by-uid
+                   required>{{lawyer.lastname}}</p>
 
 
-            <p name="lastname"
-               data-ng-minlength="3"
-               data-creator="lawyer.userID"
-               data-user="user.uid"
-               data-srip-br="true"
-               data-ng-model="lawyer.lastname"
-               data-ng-transclude
-               data-editable-by-uid
-               required>{{lawyer.lastname}}</p>
-
-           <div class="form_message">
                 <span data-ng-show="(editForm.lastname.$dirty && editForm.lastname.$invalid) || editForm.lastname.$touched">
-                    <span data-ng-show="editForm.lastname.$error.required">Bitte tragen Sie Ihren Nachnamen ein.</span>
-                    <span data-ng-show="editForm.lastname.$error.minlength">Der Nachname sollte aus mindestens 3 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="editForm.lastname.$error.required">Bitte tragen Sie Ihren Nachnamen ein.</span>
+                    <span class="form_message" data-ng-show="editForm.lastname.$error.minlength">Der Nachname sollte aus min. 3 Buchstaben bestehen.</span>
                 </span>
-           </div>
+            </div>
+
+            <div class="msg_wrapper">
+                <p name="firstname"
+                   data-creator="lawyer.userID"
+                   data-ng-minlength="3"
+                   data-user="user.uid"
+                   data-srip-br="true"
+                   data-ng-model="lawyer.firstname"
+                   data-ng-transclude
+                   data-editable-by-uid
+                   required>{{lawyer.firstname}}</p>
 
 
-            <p name="firstname"
-               data-creator="lawyer.userID"
-               data-ng-minlength="3"
-               data-user="user.uid"
-               data-srip-br="true"
-               data-ng-model="lawyer.firstname"
-               data-ng-transclude
-               data-editable-by-uid
-               required>{{lawyer.firstname}}</p>
-
-           <div class="form_message">
                 <span data-ng-show="(editForm.firstname.$dirty && editForm.firstname.$invalid) || editForm.firstname.$touched">
-                    <span data-ng-show="editForm.firstname.$error.required">Bitte tragen Sie Ihren Vornamen ein.</span>
-                    <span data-ng-show="editForm.firstname.$error.minlength">Der Vorname sollte aus mindestens 3 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="editForm.firstname.$error.required">Bitte tragen Sie Ihren Vornamen ein.</span>
+                    <span class="form_message" data-ng-show="editForm.firstname.$error.minlength">Der Vorname sollte aus min. 3 Buchstaben bestehen.</span>
                 </span>
-           </div>
+            </div>
 
-       </section>
-        <section>
             <h1>Anschrift:</h1> <!-- Placeholder mit CSS -->
-            <p name="office"
-               data-ng-minlength="3"
-               data-creator="lawyer.userID"
-               data-user="user.uid"
-               data-srip-br="true"
-               data-ng-model="lawyer.office"
-               data-ng-transclude
-               data-editable-by-uid>{{lawyer.office}}</p>
+            <div class="msg_wrapper">
+                <p name="office"
+                   data-ng-minlength="3"
+                   data-creator="lawyer.userID"
+                   data-user="user.uid"
+                   data-srip-br="true"
+                   data-ng-model="lawyer.office"
+                   data-ng-transclude
+                   data-editable-by-uid>{{lawyer.office}}</p>
 
-            <div class="form_message">
+
                 <span data-ng-show="(editForm.office.$dirty && editForm.office.$invalid) || editForm.office.$touched">
-                    <span data-ng-show="editForm.office.$error.minlength">Der Knzleiname sollte aus mindestens 3 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="editForm.office.$error.minlength">Der Kanzleiname sollte aus min. 3 Buchstaben bestehen.</span>
                 </span>
             </div>
+            <div class="msg_wrapper">
+                <p name="street" data-creator="lawyer.userID"
+                   data-user="user.uid"
+                   data-srip-br="true"
+                   data-ng-model="lawyer.street"
+                   data-ng-transclude
+                   data-editable-by-uid
+                   required>{{lawyer.street}}</p>
 
 
-            <p name="street" data-creator="lawyer.userID"
-               data-user="user.uid"
-               data-srip-br="true"
-               data-ng-model="lawyer.street"
-               data-ng-transclude
-               data-editable-by-uid
-               required>{{lawyer.street}}</p>
-
-            <div class="form_message">
                 <span data-ng-show="(editForm.street.$dirty && editForm.street.$invalid) || editForm.street.$touched">
-                    <span data-ng-show="editForm.street.$error.required">Bitte tragen Sie Ihre Straße ein.</span>
-                    <span data-ng-show="editForm.street.$error.minlength">Die Straße sollte aus mindestens 3 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="editForm.street.$error.required">Bitte tragen Sie Ihre Straße ein.</span>
+                    <span class="form_message" data-ng-show="editForm.street.$error.minlength">Die Straße sollte aus min. 3 Buchstaben bestehen.</span>
                 </span>
             </div>
+            <div class="msg_wrapper">
+                <p name="housenr"
+                   data-ng-minlength="1"
+                   data-creator="lawyer.userID"
+                   data-user="user.uid"
+                   data-srip-br="true"
+                   data-ng-model="lawyer.housenr"
+                   data-ng-transclude
+                   data-editable-by-uid
+                   required>{{lawyer.housenr}}</p>
 
-            <p name="housenr"
-               data-ng-minlength="1"
-               data-creator="lawyer.userID"
-               data-user="user.uid"
-               data-srip-br="true"
-               data-ng-model="lawyer.housenr"
-               data-ng-transclude
-               data-editable-by-uid
-               required>{{lawyer.housenr}}</p>
 
-            <div class="form_message">
                 <span data-ng-show="(editForm.housenr.$dirty && editForm.housenr.$invalid) || editForm.housenr.$touched">
-                    <span data-ng-show="editForm.housenr.$error.required">Bitte tragen Sie die Hausnummer ein.</span>
-                    <span data-ng-show="editForm.housenr.$error.minlength">Die Hausnummer sollte aus mindestens einem Zeichen bestehen.</span>
+                    <span class="form_message" data-ng-show="editForm.housenr.$error.required">Bitte tragen Sie die Hausnummer ein.</span>
+                    <span class="form_message" data-ng-show="editForm.housenr.$error.minlength">Die Hausnummer sollte aus min. einem Zeichen bestehen.</span>
                 </span>
             </div>
+            <div class="msg_wrapper">
+                <p name="zip"
+                   data-ng-minlength="5"
+                   data-creator="lawyer.userID"
+                   data-user="user.uid"
+                   data-srip-br="true"
+                   data-ng-model="lawyer.zip"
+                   data-ng-transclude
+                   data-editable-by-uid
+                   required>{{lawyer.zip}}</p>
 
-            <p name="zip"
-               data-ng-minlength="5"
-               data-creator="lawyer.userID"
-               data-user="user.uid"
-               data-srip-br="true"
-               data-ng-model="lawyer.zip"
-               data-ng-transclude
-               data-editable-by-uid
-               required>{{lawyer.zip}}</p>
 
-            <div class="form_message">
                 <span data-ng-show="(editForm.zip.$dirty && editForm.zip.$invalid) || editForm.zip.$touched">
-                    <span data-ng-show="editForm.zip.$error.required">Bitte tragen Sie die Postleitzahl ein.</span>
-                    <span data-ng-show="editForm.zip.$error.minlength">Die Postleitzahl sollte aus mindestens 5 Zeichen bestehen.</span>
+                    <span class="form_message" data-ng-show="editForm.zip.$error.required">Bitte tragen Sie die Postleitzahl ein.</span>
+                    <span class="form_message" data-ng-show="editForm.zip.$error.minlength">Die Postleitzahl sollte aus min. 5 Zeichen bestehen.</span>
                 </span>
             </div>
+            <div class="msg_wrapper">
+                <p name="domicile"
+                   data-ng-minlength="3"
+                   data-creator="lawyer.userID"
+                   data-user="user.uid"
+                   data-srip-br="true"
+                   data-ng-model="lawyer.domicile"
+                   data-ng-transclude
+                   data-editable-by-uid
+                   required>{{lawyer.domicile}}</p>
 
-            <p name="domicile"
-               data-ng-minlength="3"
-               data-creator="lawyer.userID"
-               data-user="user.uid"
-               data-srip-br="true"
-               data-ng-model="lawyer.domicile"
-               data-ng-transclude
-               data-editable-by-uid
-               required>{{lawyer.domicile}}</p>
 
-            <div class="form_message">
                 <span data-ng-show="(editForm.domicile.$dirty && editForm.domicile.$invalid) || editForm.domicile.$touched">
-                    <span data-ng-show="editForm.domicile.$error.required">Bitte tragen Sie den Ort ein.</span>
-                    <span data-ng-show="editForm.domicile.$error.minlength">Der Ort sollte aus mindestens 3 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="editForm.domicile.$error.required">Bitte tragen Sie den Ort ein.</span>
+                    <span class="form_message" data-ng-show="editForm.domicile.$error.minlength">Der Ort sollte aus min. 3 Buchstaben bestehen.</span>
                 </span>
             </div>
 
-        </section>
-        <section>
-            <h1>Kontankt:</h1>
-            <p name="phone"
-               data-ng-minlength="5"
-               data-creator="lawyer.userID"
-               data-user="user.uid"
-               data-srip-br="true"
-               data-ng-model="lawyer.phone"
-               data-ng-transclude
-               data-editable-by-uid
-               required>{{lawyer.phone}}</p>
 
-            <div class="form_message">
+            <h1>Kontankt:</h1>
+                <div class="msg_wrapper">
+                    <p name="phone"
+                       data-ng-minlength="5"
+                       data-creator="lawyer.userID"
+                       data-user="user.uid"
+                       data-srip-br="true"
+                       data-ng-model="lawyer.phone"
+                       data-ng-transclude
+                       data-editable-by-uid
+                       required>{{lawyer.phone}}</p>
+
+
                     <span data-ng-show="(editForm.phone.$dirty && editForm.phone.$invalid) || editForm.phone.$touched">
-                        <span data-ng-show="editForm.phone.$error.required">Bitte tragen Sie Ihre Telefonnummer ein.</span>
-                        <span data-ng-show="editForm.phone.$error.minlength">Die Telefonnummer sollte aus mindestens 5 Zahlen bestehen.</span>
+                        <span class="form_message" data-ng-show="editForm.phone.$error.required">Bitte tragen Sie Ihre Telefonnummer ein.</span>
+                        <span class="form_message" data-ng-show="editForm.phone.$error.minlength">Die Telefonnummer sollte aus min. 5 Zahlen bestehen.</span>
                     </span>
-            </div>
+                </div>
 
             <p>{{lawyer.email}}</p>
+            <div>
 
-        </section>
-        <div>
+                <!-- Confirmfeld fuer das Loeschen der Gruppe-->
+                <div class="confirm-delete" data-ng-show="delLawyerFlag">
+                    <div class="delete-view">
+                        <p>Sind Sie sicher, dass Sie diese Streitgruppe löschen wollen?</p>
+                        <input class="form_btn" type="button" value="Löschen" data-ng-click="delLawyer = true; delLawyerFlag = false">
+                        <input class="form_btn" type="button" value="Abbrechen" data-ng-click="delLawyer = false; delLawyerFlag = false">
+                    </div>
+                </div>
+                <!-- Update-Btn -->
+                <input class="form_btn" type="button" data-ng-if="lawyerEdited" data-ng-click="updateLawyerByID()" data-ng-disabled="editForm.$invalid" value="Änderungen speichern">
 
-            <!-- Delete-Btn -->
-            <input type="button" data-ng-if="lawyer.userID == user.uid || user.credits == 2" data-ng-click="deleteLawyerByID()" value="Profil Löschen">
-            <!-- Confirmfeld fuer das Loeschen der Gruppe-->
-            <div class="confirm-delete" data-ng-show="delLawyerFlag">
-                <p>Sind Sie sicher, dass Sie diese Streitgruppe löschen wollen?</p>
-                <input type="button" value="Löschen" data-ng-click="delLawyer = true; delLawyerFlag = false">
-                <input type="button" value="Abbrechen" data-ng-click="delLawyer = false; delLawyerFlag = false">
             </div>
-            <!-- Update-Btn -->
-            <input type="button" data-ng-if="lawyerEdited" data-ng-click="updateLawyerByID()" data-ng-disabled="editForm.$invalid" value="Änderungen speichern">
-
-        </div>
-
+        </article>
     </section>
 </article>

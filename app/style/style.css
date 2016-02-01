@@ -477,7 +477,7 @@ label[for="law"]:active{
 .short-grps p {
     font-size: 1em;
     padding-left: 0.5em;
-    font-family: lato-bold !important;
+    font-family: lato-bold, sans-serif !important;
 }
 .group, .cgroup{
     display: inline-block;
@@ -698,7 +698,7 @@ form[name="createGroup"] input[type="text"]:focus{
     padding-left: 0.5em;
     font-family: lato-bold, sans-serif !important;
 }
-#del-profile {
+.del-profile {
     float: right;
     height: 32px;
     margin: 0 1em 1em 0;
@@ -813,6 +813,53 @@ form[name="createGroup"] h2{
 }
 
 /* END lawyers*/
+
+/* START lawyerView */
+.law-view{
+    color: #1D3D59;
+    margin: 10px auto;
+    padding: 1em;
+    background: #FFFFFF;
+    box-shadow: 2px 5px 10px #1D3D59;
+}
+.law-view .del-profile{
+    margin-right: 0;
+}
+.law-view .form_message {
+    margin-top: -3.2em;
+    display: inline;
+    max-width: 70%;
+}
+.law-info {
+    clear: right;
+}
+/* END lawyerView */
+
+/* START Impressum */
+.impressum {
+    color: #1D3D59;
+    margin: 10px auto;
+    padding: 2em;
+    background: #FFFFFF;
+    box-shadow: 2px 5px 10px #1D3D59;
+}
+.impressum h1 {
+    font-size: 1.2em;
+}
+.impressum h2 {
+    font-size: 1em;
+}
+.impressum h3 {
+    font-size: 1em;
+}
+.impressum p {
+    text-align: justify;
+}
+.impressum a {
+    background: none;
+}
+/* START Impressum */
+
 /* END MAIN */
 
 h1 h2 h3 {

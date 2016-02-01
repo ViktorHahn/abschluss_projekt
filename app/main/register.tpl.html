@@ -20,7 +20,7 @@
                    data-ng-model-options="{updateOn: 'blur'}"
                    required>
             <span data-ng-show="(register_form.username.$dirty && register_form.username.$invalid) || register_form.username.$touched">
-                <span  class="form_message" data-ng-show="register_form.username.$pending">Es wird überprüft ob der Username bereits vergeben ist.</span>
+                <span  class="form_message" data-ng-show="register_form.username.$pending">Es wird &uuml;berpr&uuml;ft ob der Username bereits vergeben ist.</span>
                 <span  class="form_message" data-ng-show="register_form.username.$error.unique">Der Benutzername ist bereits Vergeben.</span>
                 <span  class="form_message" data-ng-show="register_form.username.$error.required">Tragen Sie bitte einen Benutzernamen ein.</span>
                 <span  class="form_message" data-ng-show="register_form.username.$error.minlength">Der Benutzername sollte aus mindestens 3 Buchstaben bestehen.</span>
@@ -80,7 +80,7 @@
                        data-ng-model-options="{updateOn: 'blur'}"
                        required>
                 <span data-ng-show="(register_form.email.$dirty && register_form.email.$invalid) || register_form.email.$touched">
-                    <span class="form_msg-short" data-ng-show="register_form.email.$pending">Es wird überprüft ob die angegebene Emailaddresse  bereits vergeben ist.</span>
+                    <span class="form_msg-short" data-ng-show="register_form.email.$pending">Es wird &uuml;berpr&uuml;ft ob die angegebene Emailaddresse  bereits vergeben ist.</span>
                     <span class="form_msg-short" data-ng-show="register_form.email.$error.unique">Die angegebene Emailaddresse ist bereits Vergeben.</span>
                     <span class="form_msg-short" data-ng-show="register_form.email.$error.required">Bitte geben Sie Ihre Emailadresse an.</span>
                     <span class="form_msg-short" data-ng-show="register_form.email.$error.email">Diese Emailadresse ist ung&uuml;ltig.</span>
@@ -105,8 +105,8 @@
         </div>
 
         <div class="form-wrapper">
-            <!-- Checkbox für Rechtsanwälte-->
-            <label for="law">Möchten Sie sich als Rechtsanwältin oder Rechtsanwalt registrieren?
+            <!-- Checkbox f&uuml;r Rechtsanw&auml;lte-->
+            <label for="law">M&ouml;chten Sie sich als Rechtsanw&auml;ltin oder Rechtsanwalt registrieren?
             <input type="checkbox" id="law" name="lawyer" data-ng-model="regUser.lawyer" data-ng-model-options="{updateOn: 'default', allowInvalid: true}">
             </label>
         </div>

@@ -11,7 +11,7 @@
 
 
     <!-- Profil loeschen-->
-    <input id="del-profile" class="form_btn" type="button" data-ng-click="deleteUser()" value="Profil löschen">
+    <input class="form_btn del-profile" type="button" data-ng-click="deleteUser()" value="Profil l&ouml;schen">
 
     <!--Ausgabe Userdaten-->
     <div class="clear">
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <p id="edit-info" data-ng-if="mailchecked">Sie können Email und/oder Passwort ändern.</p>
+    <p id="edit-info" data-ng-if="mailchecked">Sie k&ouml;nnen Email und/oder Passwort &auml;ndern.</p>
     <div class="form-profile">
         <form data-ng-if="mailchecked" name="edit_user" data-ng-model="edituser" novalidate>
         <div class="msg_wrapper">
@@ -52,7 +52,7 @@
             <!-- confMail -->
             <label for="newmailconf">Email-Adresse wiederholen:</label>
             <input type="email"
-                   placeholder="Email bestätigen..."
+                   placeholder="Email best&auml;tigen..."
                    id="newmailconf"
                    name="conf_email"
                    data-ng-model="edituser.confmail"
@@ -106,9 +106,9 @@
         </div>
         <div class="msg_wrapper">
             <!-- confPasswort-->
-            <label for="confpass">Passwort bestätigen:</label>
+            <label for="confpass">Passwort best&auml;tigen:</label>
             <input type="password"
-                   placeholder="Passwort bestätigen..."
+                   placeholder="Passwort best&auml;tigen..."
                    id="confpass"
                    name="confpassword"
                    data-ng-minlength="6"
@@ -131,8 +131,8 @@
     <!-- Popup Bestaettigung des Loeschvorgangs-->
     <div class="confirm-delete" data-ng-show="delFlag">
         <div class="delete-view">
-            <p>Sind Sie sicher, dass Sie Ihr Profil löschen wollen?</p>
-            <input class="form_btn" type="button" value="Löschen" data-ng-click="delUser = true; delFlag = false">
+            <p>Sind Sie sicher, dass Sie Ihr Profil l&ouml;schen wollen?</p>
+            <input class="form_btn" type="button" value="L&ouml;schen" data-ng-click="delUser = true; delFlag = false">
             <input class="form_btn" type="button" value="Abbrechen" data-ng-click="delUser = false; delFlag = false">
         </div>
     </div>

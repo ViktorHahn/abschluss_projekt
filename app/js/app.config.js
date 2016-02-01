@@ -70,6 +70,11 @@ app.config(['$routeProvider', function ($routeProvider, $routeParams) {
             controller: 'createGroupCtrl',
             access: {allowAnonymous : false}
         })
+        .when('/impressum', {
+            title: 'Impressum',
+            templateUrl: 'main/impressum.tpl.html',
+            access: {allowAnonymous : false}
+        })
         .otherwise({
             redirectTo: '/'
         })

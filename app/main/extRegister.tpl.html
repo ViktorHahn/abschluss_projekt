@@ -6,7 +6,7 @@
                 name="gender"
                 data-ng-model="regUser.gender"
                 required>
-            <option value="" default selected>Anrede</option>
+            <option value="" selected>Anrede</option>
             <option value="Frau">Frau</option>
             <option value="Herr">Herr</option>
         </select>
@@ -63,9 +63,9 @@
 <div class="form-wrapper">
 <!-- Straße -->
     <div class="reg_form form-left">
-        <label for="str">Straße <span style="color: red">*</span></label>
+        <label for="str">Stra&szlig;e <span style="color: red">*</span></label>
         <input type="text"
-               placeholder="Straße..."
+               placeholder="Stra&szlig;e..."
                id="str"
                name="street"
                data-ng-model="regUser.street"
@@ -73,8 +73,8 @@
                required>
 
         <span data-ng-show="(register_form.street.$dirty && register_form.street.$invalid) || register_form.street.$touched">
-            <span class="form_msg-short" data-ng-show="register_form.street.$error.required">Bitte tragen Sie Ihre Straße ein.</span>
-            <span class="form_msg-short" data-ng-show="register_form.street.$error.minlength">Die Straße sollte aus mindestens 3 Buchstaben bestehen.</span>
+            <span class="form_msg-short" data-ng-show="register_form.street.$error.required">Bitte tragen Sie Ihre Stra&szlig;e ein.</span>
+            <span class="form_msg-short" data-ng-show="register_form.street.$error.minlength">Die Stra&szlig;e sollte aus mindestens 3 Buchstaben bestehen.</span>
         </span>
     </div>
 
