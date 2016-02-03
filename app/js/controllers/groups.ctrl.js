@@ -1,5 +1,5 @@
 // Controller zur Steuerung der Gruppenuebersicht
-app.controller('groupsCtrl', function ($scope, $rootScope, dataService, $routeParams, $location, $timeout) {
+app.controller('groupsCtrl', function ($scope, $rootScope, dataService, $routeParams, $location) {
     // Definieren von Eingenschaften
     // @ q : aufzurufende PHP-Datei
     var q = 'groups.handler.php';
@@ -7,6 +7,9 @@ app.controller('groupsCtrl', function ($scope, $rootScope, dataService, $routePa
     $scope.msg = '';
     // Daten fuer die Groups
     $scope.grps = {};
+    $scope.hits = '';
+    $scope.term = '';
+    $scope.tag = '';
 
 
     // Methode zum Abruf von Gruppen
@@ -24,8 +27,8 @@ app.controller('groupsCtrl', function ($scope, $rootScope, dataService, $routePa
             srch.term.length > 0
         ){
             // Erweiterte Anfrage mit Suchterm
+            $scope.term= srch.term;
             request.srchTerm = srch.term;
-
             // Erweiterte Anfrage mit einem Tag, wenn existent
             if(srch.hasOwnProperty('tag') &&
                 srch.tag.length > 0
@@ -41,17 +44,13 @@ app.controller('groupsCtrl', function ($scope, $rootScope, dataService, $routePa
                 var result = (angular.isObject(data))?data:{};
                 if(!result.hasOwnProperty('msg')){
                     $scope.grps = result;
+                    $scope.hits = result.length;
                 }
                 // Fehlerlausgabe des Servers
                 else if (result.hasOwnProperty('msg') &&
                     result.msg.length > 0
-                ){
+                ) {
                     $scope.msg = result.msg;
-                    // redirect auf groups
-                    $timeout(function(){
-                        $scope.msg = '';
-                        $location.path('/groups');
-                    }, 2500)
                 }
             });
         };
@@ -64,12 +63,14 @@ app.controller('groupsCtrl', function ($scope, $rootScope, dataService, $routePa
             $scope.getGroups();
         }
         if($routeParams.term && $routeParams.tag){
-            srch.term = $routeParams.term;
-            srch.tag = $routeParams.tag;
+            $scope.term = $routeParams.term;
+            $scope.tag = $routeParams.tag;
+            angular.extend(srch, $scope.term, $scope.tag);
             $scope.getGroups(srch);
         }
         else if($routeParams.term){
             srch.term = $routeParams.term;
+            angular.extend(srch, $scope.term);
             $scope.getGroups(srch);
         }
 

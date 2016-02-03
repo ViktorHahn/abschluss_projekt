@@ -2,6 +2,7 @@ app.config(['$routeProvider', function ($routeProvider, $routeParams) {
     $routeProvider
         .when('/',{
             title: 'Willkommen bei dJury',
+            templateUrl: 'main/home.tpl.html',
             access: {allowAnonymous : true}
         })
         .when('/login',{
@@ -73,7 +74,7 @@ app.config(['$routeProvider', function ($routeProvider, $routeParams) {
         .when('/impressum', {
             title: 'Impressum',
             templateUrl: 'main/impressum.tpl.html',
-            access: {allowAnonymous : false}
+            access: {allowAnonymous : true}
         })
         .otherwise({
             redirectTo: '/'

@@ -114,7 +114,6 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])) {
                             } else if(isset($sqlMail)){
                                 $sqlSum = $sqlStart.$sqlMail.$sqlEnd;
                             }
-    //                        todo: leere Anfragen abfangen
                             $db->query($sqlSum);
 
 

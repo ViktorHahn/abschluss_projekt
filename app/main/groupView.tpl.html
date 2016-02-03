@@ -91,7 +91,7 @@
         <p data-ng-if="noPost">{{noPost}}</p>
         <!-- Info Anzeige, dass man sich einloggen muss, um Diskussion zu sehen -->
         <p data-ng-if="!user.uid">Bitte <a href="#/login">einloggen</a>, wenn Sie sich an der Diskussion beteiligen m&ouml;chten.</p>
-        <!-- todo: beitrag speichern btn erscheint bei allen beiträgen-->
+
         <article class="post"
                  data-ng-repeat="post in posts | orderBy: '-time' track by $index">
             <p class="message"
@@ -155,4 +155,3 @@
         </form>
     </section>
 </section>
-<!--todo Fehlermeldung wenn keine Beiträge beseitigen-->

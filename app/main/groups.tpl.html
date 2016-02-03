@@ -1,5 +1,11 @@
+<!-- Info Nachrichten -->
+
+
 <!-- Darstellung der Gruppen -->
 <section class="grp-overview">
+    <h1  data-ng-if="!term && !msg">Allgemeine Übersicht der Streitgruppen.</h1>
+    <p data-ng-if="msg">{{ msg }} Sie k&ouml;nnen Ihre Suche durch Stichworte verfeinern.</p>
+    <p data-ng-if="term">Ihre Suchanfrage nach <span data-ng-if="tag">dem Stichwort "{{tag}}" und </span> dem Suchbegriff "{{term}}" ergab {{hits}} Treffer.</p>
     <article class="short-grps" data-ng-repeat="grp in grps">
         <section class="group">
             <div>

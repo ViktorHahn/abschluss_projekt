@@ -8,22 +8,27 @@ if(!isset($_SESSION['XSRF'])){
 };
 ?>
 <!DOCTYPE html>
-<html data-ng-app="djury" data-ng-controller="appCtrl">
+<html>
 <head lang="de">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=2">
     <link rel="stylesheet" type="text/css" href="style/style.css">
-    <title>djury - Davids gegen Goliath</title>
+    <title>dJury - David gegen Goliath</title>
+    <script type="text/javascript" charset="utf-8" src="lib/jquery-1.12.0.min.js"></script>
+<!--    <script type="text/javascript" charset="utf-8" src="lib/edge.6.0.0.min.js"></script>-->
+
 </head>
-<body>
+<body data-ng-app="djury" data-ng-controller="appCtrl">
     <noscript>
         <p>Es scheint, dass JavaScript deaktiviert ist.</p>
-        <p>Um die Funktionen dieser Seite nutzen zu können, muss JavaScript aktiviert sein.</p>
+        <p>Um die Funktionen dieser Seite nutzen zu k&ouml;nnen, muss JavaScript aktiviert sein.</p>
     </noscript>
     <header>
         <!-- header-Template wird eingebunden-->
         <div data-ng-include="'header/header.tpl.html'"></div>
     </header>
+
 
     <main>
         <!-- Viewport fuer den Maincontent -->
@@ -43,18 +48,19 @@ if(!isset($_SESSION['XSRF'])){
     <!-- Einbingung des Sessiontokens in die Angularanwendung, s.a. app.js-->
     <script>angular.module("djury").constant("CSRF_TOKEN", '<?=$_SESSION['XSRF'];?>');</script>
 
-    <script src="js/app.config.js"></script>
-    <script src="js/controllers/app.ctrl.js"></script>
-    <script src="js/services/data.service.js"></script>
-    <script src="js/controllers/auth.ctrl.js"></script>
-    <script src="js/directives/editableByUid.directive.js"></script>
-    <script src="js/directives/contenteditable.directive.js"></script>
-    <script src="js/directives/asyncUniq.directive.js"></script>
-    <script src="js/controllers/createGroup.ctrl.js"></script>
-    <script src="js/controllers/groupView.ctrl.js"></script>
-    <script src="js/controllers/groups.ctrl.js"></script>
-    <script src="js/controllers/lawyers.ctrl.js"></script>
-    <script src="js/controllers/user.ctrl.js"></script>
-    <script src="js/controllers/lawyerView.ctrl.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/controllers/app.ctrl.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/services/data.service.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/controllers/auth.ctrl.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/directives/editableByUid.directive.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/directives/contenteditable.directive.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/directives/asyncUniq.directive.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/controllers/createGroup.ctrl.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/controllers/groupView.ctrl.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/controllers/groups.ctrl.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/controllers/lawyers.ctrl.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/controllers/user.ctrl.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/controllers/lawyerView.ctrl.js"></script>
+
 </body>
 </html>

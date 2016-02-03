@@ -858,7 +858,14 @@ form[name="createGroup"] h2{
 .impressum a {
     background: none;
 }
-/* START Impressum */
+/* START home */
+.home{
+    color: #1D3D59;
+    padding: 30px;
+    background: #FFFFFF;
+    box-shadow: 2px 5px 10px #1D3D59;
+}
+/* END home */
 
 /* END MAIN */
 

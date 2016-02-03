@@ -450,7 +450,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])) {
 
                     // Erstellen der gesamten SQL
                     $sqlSum = $sqlBeginn.(isset($extSql)?$extSql:'').$sqlEnd.(isset($extSql)?$sqlWhere:$sqlWhereShort).(isset($extSql)?$sqlOrder:'').$sqlLimit;
-
+//                    die($sqlSum);
                     // Abschicken der SQL
                     $result = $db->query($sqlSum);
 
@@ -460,7 +460,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])) {
                     // Else Antwort des Servers, wenn DB-Anbfrage nicht erfolgreich
 
                     $response =[
-                        "msg" => "Ihre Anfrage konnte leider nicht bearbeitet werden. Versuchen Sie es bitte erneut oder kontaktieren Sie uns."
+                        "msg" => "Ihre Suchanfrage ergab leider keine Treffer."
                     ];
                     // Wenn Treffer nicht leer, Ausgabe der Treffer
                     if($r > 0){

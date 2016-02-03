@@ -12,6 +12,17 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
     $scope.msg = '';
     $scope.menuToggle = false;
 
+    //Methode zum testen ob location ist home
+    $scope.homeloc = function(){
+        if($location.path() == '/'){
+            console.log('home');
+            return true;
+        } else {
+            console.log('not home');
+            return false;
+        }
+    };
+
     // Toggle Methode des Menues
     $scope.toggle = function(){
         $scope.menuToggle = !$scope.menuToggle;
@@ -28,7 +39,7 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
     // Eventlistener auf $rootScope.user.uid
     // Sollte der user eingelogt sein und die Benutzerinformationen durch Neuladen
     // verlohren gehen, dann werden die Informationen aus dem sessionStorage wiederhergestellt
-    $rootScope.$watch('user.uid', function(newValue, oldValue){
+    $rootScope.$watch('user.uid', function(newValue){
         var sUID= sessionStorage.getItem('uid');
         if(newValue == null && sUID != null){
             $rootScope.user.utoken = sessionStorage.getItem('utoken');
@@ -45,8 +56,6 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
             // Wenn tag groesser 0, dann tag, sonst '';
             var tag = (srchData.tag.length > 0) ? srchData.tag : '';
             $location.path('/groups/'+srchData.term+'/'+tag);
-            srchData.term = '';
-            srchData.tag = '';
         }
     };
 
@@ -77,7 +86,7 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
 
 
     // Eventlistener zum Sperren von Routes, wenn user keine Berechtigung besitzt
-    $scope.$on('$routeChangeStart', function (event, next, current) {
+    $scope.$on('$routeChangeStart', function (event, next) {
 
         //zugriff auf next als nächste Route und app.config.js access-Definition und Abgleich ob User eingeloggt ist
         if(next.access != undefined &&
@@ -90,7 +99,7 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
     });
     // Ueberprufen ob der User die entsprechende User-Profilseite aufrufen darf
 
-    $scope.$on('$routeChangeSuccess', function(event, next, current){
+    $scope.$on('$routeChangeSuccess', function(event, next){
 
         var param = $routeParams.hasOwnProperty('username')?$routeParams.username:'';
 
