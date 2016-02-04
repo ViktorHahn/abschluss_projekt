@@ -132,25 +132,26 @@
     <section class="new-post" data-ng-if="user.uid">
         <p>Verfassen Sie einen Beitrag.</p>
         <form name="new_post"
-              data-ng-model="nPost"
               class="data-ng-pristin data-ng-valid"
               novalidate>
             <textarea class="create-post"
                       placeholder="Beteiligen Sie sich an der Diskussion ..."
-                      data-ng-model="nPost.message"
-                      data-ng-maxlength="300"
+                      data-ng-model="n_message"
+                      data-ng-maxlength="1500"
                       required></textarea>
+            {{n_message}}
+            
             <!-- Validierungsnachrichten -->
             <div>
                 <span data-ng-show="(new_post.message.$dirty && new_post.message.$invalid) || new_post.message.$touched">
                     <span class="form_message" data-ng-show="new_post.message.$error.required">Sie m&uuml;ssen eine Nachricht eintragen.</span>
-                    <span class="form_message" data-ng-show="new_post.message.$error.maxlength">Die Nachricht darf nicht l&auml;nger als 300 Zeichen lang sein.</span>
+                    <span class="form_message" data-ng-show="new_post.message.$error.maxlength">Die Nachricht darf nicht l&auml;nger als 1500 Zeichen lang sein.</span>
                 </span>
             </div>
             <input class="form_btn btn-update"
                    type="button"
                    value="Abschicken"
-                   data-ng-click="createPost(new_post, nPost.message)"
+                   data-ng-click="createPost(new_post, n_message)"
                    data-ng-disabled="new_post.$invalid">
         </form>
     </section>

@@ -11,7 +11,7 @@ app.controller('groupViewCtrl', function($scope, $rootScope, $location, $routePa
     $scope.grp = {};
     $scope.posts = {};
     $scope.noPost = '';
-
+    
     $scope.updatedPostFlag = false;
 
     // Eigenschften zur Abfrage des Loeschvorgangs von Gruppe
@@ -187,7 +187,7 @@ app.controller('groupViewCtrl', function($scope, $rootScope, $location, $routePa
             //Asynchrone Anfrage an den Server
             dataService.put(request, q)
                 // Wenn Antwort
-                .then(function successCalback(result){
+                .then(function successCallback(result){
                     // Wenn die Antwort ein JSON-Objekt ist und
                     // die Eigenschaften discussionID & time besitzt
                     if(angular.isObject(result) &&
@@ -201,8 +201,8 @@ app.controller('groupViewCtrl', function($scope, $rootScope, $location, $routePa
                         };
                         angular.extend(newMessage, extendNewMessage);
                         // Erweitern der Posts im Scope
-                        $scope.posts.push(newMessage);
-                        //angular.extend($scope.posts, newMessage);
+                        $scope.posts.push.apply(newMessage);
+                        $scope.nPost.message = '';
 
                     } else if(result.hasOwnProperty('msg')){
                         $scope.msg = result.msg;

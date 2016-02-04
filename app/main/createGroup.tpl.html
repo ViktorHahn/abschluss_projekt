@@ -10,15 +10,15 @@
                 <label for="gname">Geben Sie Ihrer Streitgruppe einen Namen <span class="required-red">*</span></label>
                 <input type="text" id="gname"
                        name="groupName"
-                       placeholder="W&auml;len Sie einen Namen"
+                       placeholder="W&auml;hlen Sie einen Namen"
                        data-ng-model="newGroup.name"
                        data-ng-minlength="5"
-                       data-ng-maxlength="20"
+                       data-ng-maxlength="70"
                        required>
 
                 <span data-ng-show="(createGroup.groupName.$dirty && createGroup.groupName.$invalid) || createGroup.groupName.$touched">
                     <span class="form_message" data-ng-show="createGroup.groupName.$error.minlength">Der Gruppenname sollte aus mindestens 5 Buchstaben bestehen.</span>
-                    <span class="form_message" data-ng-show="createGroup.groupName.$error.maxlength">Der Gruppenname sollte aus maximal 20 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="createGroup.groupName.$error.maxlength">Der Gruppenname sollte aus maximal 70 Buchstaben bestehen.</span>
                     <span class="form_message" data-ng-show="createGroup.groupName.$error.required">Tragen Sie bitte einen Gruppennamen ein.</span>
                 </span>
 
@@ -30,12 +30,12 @@
                 <textarea   id="description" name="groupDescription" placeholder="Beschreiben Sie den Zweck der Gruppe ..."
                             data-ng-model="newGroup.description"
                             data-ng-minlength="20"
-                            data-ng-maxlength="150"
+                            data-ng-maxlength="1500"
                             required></textarea>
 
                 <span data-ng-show="(createGroup.groupDescription.$dirty && createGroup.groupDescription.$invalid) || createGroup.groupDescription.$touched">
                     <span class="form_message" data-ng-show="createGroup.groupDescription.$error.minlength">Der Gruppenname sollte aus mindestens 20 Buchstaben bestehen.</span>
-                    <span class="form_message" data-ng-show="createGroup.groupDescription.$error.maxlength">Der Gruppenname sollte aus maximal 150 Buchstaben bestehen.</span>
+                    <span class="form_message" data-ng-show="createGroup.groupDescription.$error.maxlength">Der Gruppenname sollte aus maximal 1500 Buchstaben bestehen.</span>
                     <span class="form_message" data-ng-show="createGroup.groupDescription.$error.required">Beschreiben Sie wogegen diese Gruppe streitet.</span>
                 </span>
             </div>

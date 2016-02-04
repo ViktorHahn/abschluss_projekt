@@ -37,7 +37,6 @@ app.controller('groupsCtrl', function ($scope, $rootScope, dataService, $routePa
             }
 
         }
-
         //Asynchrone Anfrage an den Server
         dataService.get(request, q)
             .then(function successCallback(data){
@@ -63,9 +62,9 @@ app.controller('groupsCtrl', function ($scope, $rootScope, dataService, $routePa
             $scope.getGroups();
         }
         if($routeParams.term && $routeParams.tag){
-            $scope.term = $routeParams.term;
             $scope.tag = $routeParams.tag;
-            angular.extend(srch, $scope.term, $scope.tag);
+            $scope.term = $routeParams.term;
+            angular.extend(srch, $routeParams);
             $scope.getGroups(srch);
         }
         else if($routeParams.term){

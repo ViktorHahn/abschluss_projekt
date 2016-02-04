@@ -5,10 +5,10 @@ session_start();
 require_once('classes/class.db.php');
 require_once('classes/class.validate.php');
 
-if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])) {
+if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_X_CSRF_TOKEN'])) {
 
     // Abgleich der Tokens
-    if ($_SESSION['XSRF'] === trim(strip_tags($_SERVER['HTTP_CSRF_TOKEN']))) {
+    if ($_SESSION['XSRF'] === trim(strip_tags($_SERVER['HTTP_X_CSRF_TOKEN']))) {
 
         $response = [];
         $counterID = null;

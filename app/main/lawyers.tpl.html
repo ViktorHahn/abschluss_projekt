@@ -9,21 +9,12 @@
     <h1>&Uuml;bersicht der Rechtsanw&auml;lte</h1>
     <section data-ng-repeat="lawyer in lawyers">
 
-        <a href="#/lawyer/{{lawyer.lastname}}/{{lawyer.userID}}">
+        <!-- Ausgabe des Anwalts-->
         <article class="lawyers">
-            <h2>{{lawyer.gender}} {{lawyer.lastname}}, {{lawyer.firstname}}</h2>
-            <p>Anschrift:</p>
-            <p>{{lawyer.zip}}</p>
-            <p>{{lawyer.domicile}}</p>
+            <h1><a href="#/lawyer/{{lawyer.lastname}}/{{lawyer.userID}}">{{lawyer.lastname}}, {{lawyer.firstname}}</a></h1>
+            <p>Anschrift: {{lawyer.zip}} {{lawyer.domicile}}</p>
+            <p>Fachbereich: </p>
         </article>
-                   <!-- <th>Rechtsanwalt</th>
-                    <td data-ng-model="lawyer.gender"></td>
-                    <td data-ng-model="lawyer.lastname">{{lawyer.lastname}}</td>
-                    <td data-ng-model="lawyer.firstname">{{lawyer.firstname}}</td>
 
-                    <th>Anschrift</th>
-                    <td data-ng-model="lawyer.zip">{{lawyer.zip}}</td>
-                    <td data-ng-model="lawyer.domicile">{{lawyer.domicile}}</td>-->
-        </a>
     </section>
 </section>

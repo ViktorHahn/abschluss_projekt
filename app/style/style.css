@@ -805,11 +805,17 @@ form[name="createGroup"] h2{
 /* END createGroupe */
 /* START lawyers*/
 .lawyers{
+    display: inline-block;
+    float: left;
+    width: 45%;
     color: #1D3D59;
-    margin: 10px auto;
-    padding: 1em;
+    margin: 1%;
+    padding: 0.5em;
     background: #FFFFFF;
     box-shadow: 2px 5px 10px #1D3D59;
+}
+.lawyers h1 {
+    font-size: 1em;
 }
 
 /* END lawyers*/
@@ -861,9 +867,17 @@ form[name="createGroup"] h2{
 /* START home */
 .home{
     color: #1D3D59;
+    margin-top: 1em;
     padding: 30px;
     background: #FFFFFF;
     box-shadow: 2px 5px 10px #1D3D59;
+}
+.animate-descr{
+    margin-top: 2em;
+}
+.animate-descr p{
+    text-align: justify;
+    line-height: 1.8em;
 }
 /* END home */
 
@@ -886,7 +900,7 @@ h1 h2 h3 {
     padding: 1em;
     border: 2px solid #1D3D59;
     border-radius: 2px;
-    background-color: rgba(210,229,0,0.8);
+    background-color: rgba(210,229,0,1);
     color: #1D3D59;
     text-align: center;
     line-height: 2em;

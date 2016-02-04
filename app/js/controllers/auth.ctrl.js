@@ -69,9 +69,6 @@ app.controller('authCtrl', function ($scope, $rootScope, $location, $http, $rout
                     } // if
                     // Login fehlgeschlagen
                     else if(result.hasOwnProperty('errMsg')){
-                        //Nach fehlgeschlagenem Login wird die Validität des Formulars auf false gesetzt
-                        // und triggert dadurch die Fehlerausgabe
-                        $scope.form.$setValidity('logerr', false);
                         $scope.errMsg = result.errMsg;
 
                     } // else if

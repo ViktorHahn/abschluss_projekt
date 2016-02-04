@@ -48,7 +48,7 @@ app.config(['$routeProvider', function ($routeProvider, $routeParams) {
             access: {allowAnonymous : true}
         })
         .when('/group/:groupID',{
-            title: 'dJury - groupName',
+            title: 'dJury - ',
             templateUrl: 'main/groupView.tpl.html',
             controller: 'groupViewCtrl',
             access: {allowAnonymous : true}

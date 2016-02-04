@@ -5,11 +5,11 @@ session_start();
 require_once('classes/class.db.php');
 require_once('classes/class.validate.php');
 
-if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])) {
+if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_X_CSRF_TOKEN'])) {
 
     // Abgleich der Tokens
-    if ($_SESSION['XSRF'] === trim(strip_tags($_SERVER['HTTP_CSRF_TOKEN']))) {
-
+    if ($_SESSION['XSRF'] === trim(strip_tags($_SERVER['HTTP_X_CSRF_TOKEN']))) {
+        
         $response = [];
         $counterID = null;
         $timestamp = null;
@@ -100,7 +100,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])) {
                                 if ($db->affected_rows > 0 && $counterID > 0) {
                                     $grpID = $db->insert_id;
                                     $response = [
-                                        "msg" => "Sie haben erfolgreich eine neue Streitgruppe ersellt.",
+                                        "msg" => "Sie haben erfolgreich eine neue Streitgruppe erstellt.",
                                         "grpID" => $grpID
                                     ];
                                 }
@@ -108,7 +108,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])) {
                             // Gruppenname ist vergeben
                             else {
                                 $response = [
-                                    "msg" => "Die gewählte Streitgruppenname ist bereits vergeben. Bitte wählen Sie einen Neuen aus."
+                                    "msg" => "Der gew&auml;hlte Streitgruppenname ist bereits vergeben. Bitte w&auml;hlen Sie einen Neuen aus."
                                 ];
                             }
                         }// END IF
@@ -450,7 +450,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])) {
 
                     // Erstellen der gesamten SQL
                     $sqlSum = $sqlBeginn.(isset($extSql)?$extSql:'').$sqlEnd.(isset($extSql)?$sqlWhere:$sqlWhereShort).(isset($extSql)?$sqlOrder:'').$sqlLimit;
-//                    die($sqlSum);
+                    //die($sqlSum);
                     // Abschicken der SQL
                     $result = $db->query($sqlSum);
 
@@ -467,7 +467,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])) {
                         $data=[];
                         while($obj = $result->fetch_object()){
                             $data[]=$obj;
-                        }
+                        }    
                         $response = $data;
                     }
                     break;

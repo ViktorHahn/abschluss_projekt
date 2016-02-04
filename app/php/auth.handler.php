@@ -5,10 +5,10 @@ session_start();
 require_once('classes/class.db.php');
 require_once('classes/class.validate.php');
 
-if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])){
+if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_X_CSRF_TOKEN'])){
 
     // Abgleich der Tokens
-    if($_SESSION['XSRF'] === trim(strip_tags($_SERVER['HTTP_CSRF_TOKEN']))){
+    if($_SESSION['XSRF'] === trim(strip_tags($_SERVER['HTTP_X_CSRF_TOKEN']))){
 
         // Zugriff auf die POST-Daten
         $data = file_get_contents("php://input");
@@ -67,14 +67,14 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])){
                         else {
                             // Vobereiten der Ausgaben an den Client
                             $response = [
-                                "errMsg" => "Login fehlgeschlagen. Bitte überprüfen Sie Ihre Eingabe."
+                                "errMsg" => "Login fehlgeschlagen. Bitte &uuml;berpr&uuml;fen Sie Ihre Eingabe."
                             ];
                         } // END User existiert
                     } //END IF isset(Benutzername & Passwort)
                     else {
                         // Vobereiten der Ausgaben an den Client
                         $response = [
-                            "errMsg" => "Sie müssen einen Benutzernamen und Passwort angeben."
+                            "errMsg" => "Sie m&uuml;ssen einen Benutzernamen und Passwort angeben."
                         ];
                     } // END ELSE isset(Benutzername & Passwort)
                         break;
@@ -147,8 +147,8 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])){
                             if($db->affected_rows > 0){
                                 // Vorbereiten der Email
                                 $to = $request->email;
-                                $subject = 'Schließen Sie Ihre Anmeldung bei dJury ab.';
-                                $msg = 'Bestätigen Sie Ihre Registrierung bei dJury durch Anklicken dieses Links: \n
+                                $subject = 'Schliessen Sie Ihre Anmeldung bei dJury ab.';
+                                $msg = 'Best&auml;tigen Sie Ihre Registrierung bei dJury durch Anklicken dieses Links: \n
                                         https://http://localhost:63342/djury/app/index.php#/registrieren/'.$regHash.' \n
                                         ab.';
                                 $headers = 'From: noreply@djury.de';
@@ -158,7 +158,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])){
 
                                 // Generieren einer Nachricht an den Client
                                 $response = [
-                                    "msg" => "Ihre Anmeldung ist fast abgeschoßen. Zur Bestätigung Ihrer Emailadresse ist Ihnen ein Aktivierungslink zugesendet worden."
+                                    "msg" => "Ihre Anmeldung ist fast abgeschlossen. Zur Best&auml;tigung Ihrer Emailadresse ist Ihnen ein Aktivierungslink zugesendet worden."
                                 ];
 
                             } // END IF MAIL-Versand
@@ -187,7 +187,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])){
                         if($db->affected_rows > 0){
                             // Vorbereiten des Response
                             $response = [
-                                "msg" => "Ihre Registrierung ist abgeschloßen. Bitte loggen Sie sich ein."
+                                "msg" => "Ihre Registrierung ist abgeschlossen. Bitte loggen Sie sich ein."
                             ];
                         } // END IF affected_rows
                     } // END IF regHash -> Wert
@@ -234,7 +234,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_CSRF_TOKEN'])){
         } // END IF Welcher Art ist die Anfrage?
         else {
             $response = [
-                "errMsg" => "Anfrage fehlgeschlagen. Bitte Versuchen Sie es erneut."
+                "errMsg" => "Anfrage fehlgeschlagen. Bitte versuchen Sie es erneut."
             ];
 
         } // END ELSE Welcher Art ist die Anfrage?

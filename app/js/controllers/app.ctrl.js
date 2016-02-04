@@ -12,17 +12,6 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
     $scope.msg = '';
     $scope.menuToggle = false;
 
-    //Methode zum testen ob location ist home
-    $scope.homeloc = function(){
-        if($location.path() == '/'){
-            console.log('home');
-            return true;
-        } else {
-            console.log('not home');
-            return false;
-        }
-    };
-
     // Toggle Methode des Menues
     $scope.toggle = function(){
         $scope.menuToggle = !$scope.menuToggle;
@@ -82,8 +71,6 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
                 $location.path('/');
             })
     };
-
-
 
     // Eventlistener zum Sperren von Routes, wenn user keine Berechtigung besitzt
     $scope.$on('$routeChangeStart', function (event, next) {

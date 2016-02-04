@@ -5,6 +5,7 @@ if(!isset($_SESSION['XSRF'])){
     // Erzeugung eines Sessiontokens
     $token = hash('sha256', uniqid(mt_rand(), true));
     $_SESSION['XSRF']=$token;
+    
 };
 ?>
 <!DOCTYPE html>
@@ -51,10 +52,11 @@ if(!isset($_SESSION['XSRF'])){
     <script type="text/javascript" charset="utf-8" src="js/app.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/controllers/app.ctrl.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/services/data.service.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/controllers/auth.ctrl.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/directives/editableByUid.directive.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/directives/contenteditable.directive.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/directives/asyncUniq.directive.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/directives/searchPlaceholder.directive.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/controllers/auth.ctrl.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/controllers/createGroup.ctrl.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/controllers/groupView.ctrl.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/controllers/groups.ctrl.js"></script>
