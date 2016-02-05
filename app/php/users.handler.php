@@ -41,8 +41,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_X_CSRF_TOKEN'])) {
                     ){
                         //SQL
                         $sql = 'SELECT username, email FROM users WHERE userID = "'.$request->uid.'" AND
-                                                                        status = 0 AND NOT
-                                                                        usertype = 2;';
+                                                                        status = 0;';
                         $result = $db->query($sql);
                         $r = is_object($result)?$result->num_rows:false;
                         if($r){

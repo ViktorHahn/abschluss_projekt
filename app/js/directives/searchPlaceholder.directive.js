@@ -7,6 +7,7 @@ app.directive('searchPlaceholder', function($location, $routeParams){
                 $routeParams.lawyerName ||
                 $routeParams.lawyerID
             ){
+
                 // toDo: Placeholder des Suchfeldes austauschen, wenn Location.path() == /laywer*
             }
         }
