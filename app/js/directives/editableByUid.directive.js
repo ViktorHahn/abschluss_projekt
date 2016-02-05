@@ -22,7 +22,6 @@ app.directive('editableByUid', function($compile){
             scope.$watch('creator', function(){
                 // Anfrage ob creator existiert und creater gleich eingelogter user
                 // oder Admin ist
-                console.log(scope.creator+' '+scope.user);
                 if(scope.creator.length >0 &&
                     (angular.equals(scope.creator,scope.user) || scope.$$nextSibling.user.credits == 2)
                 ){
