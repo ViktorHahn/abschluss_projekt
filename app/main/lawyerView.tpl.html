@@ -51,6 +51,7 @@
             </div>
 
             <div class="msg_wrapper">
+                <p>Vorname:</p>
                 <p name="firstname"
                    data-creator="{{lawyer.userID}}"
                    data-ng-minlength="3"
@@ -70,6 +71,7 @@
 
             <h1>Anschrift:</h1> <!-- Placeholder mit CSS -->
             <div class="msg_wrapper">
+                <p>Kanzlei:</p>
                 <p name="office"
                    data-ng-minlength="3"
                    data-creator="{{lawyer.userID}}"
@@ -85,6 +87,7 @@
                 </span>
             </div>
             <div class="msg_wrapper">
+                <p>Straße:</p>
                 <p name="street" data-creator="{{lawyer.userID}}"
                    data-user="{{user.uid}}"
                    data-srip-br="true"
@@ -100,6 +103,7 @@
                 </span>
             </div>
             <div class="msg_wrapper">
+                <p>Hausnummer:</p>
                 <p name="housenr"
                    data-ng-minlength="1"
                    data-creator="{{lawyer.userID}}"
@@ -117,6 +121,7 @@
                 </span>
             </div>
             <div class="msg_wrapper">
+                <p>PLZ:</p>
                 <p name="zip"
                    data-ng-minlength="5"
                    data-creator="{{lawyer.userID}}"
@@ -134,6 +139,7 @@
                 </span>
             </div>
             <div class="msg_wrapper">
+                <p>Ort:</p>
                 <p name="domicile"
                    data-ng-minlength="3"
                    data-creator="{{lawyer.userID}}"
@@ -154,6 +160,7 @@
 
             <h1>Kontankt:</h1>
                 <div class="msg_wrapper">
+                    <p>Telefon:</p>
                     <p name="phone"
                        data-ng-minlength="5"
                        data-creator="{{lawyer.userID}}"
@@ -170,7 +177,7 @@
                         <span class="form_message" data-ng-show="editForm.phone.$error.minlength">Die Telefonnummer sollte aus min. 5 Zahlen bestehen.</span>
                     </span>
                 </div>
-
+            <p>Email:</p>
             <p>{{lawyer.email}}</p>
             <div>
 
