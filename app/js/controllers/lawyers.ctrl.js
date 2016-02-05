@@ -35,7 +35,7 @@ app.controller('lawyersCtrl', function ($scope, $rootScope, $location, $routePar
             }
 
         }
-        console.dir(request);
+
         //Asynchrone Anfrage an den Server
         dataService.get(request, q)
             .then(function successCallback(data){

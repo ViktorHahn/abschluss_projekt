@@ -100,13 +100,15 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_X_CSRF_TOKEN'])) {
 
                     // Sortierung
                     $sqlOrder = ' ORDER BY priority DESC, lastname ASC';
+                    // Sortirung Kurz
+                    $sqlOrderShort = ' ORDER BY lastname ASC';
 
                     // Limitierung
                     $sqlLimit = ' LIMIT 10;';
 
 
                     // Erstellen der gesamten SQL
-                    $sqlSum = $sqlBeginn.(isset($extSql)?$extSql:'').$sqlEnd.$sqlWhere.(isset($extSql)?$sqlOrder:'').$sqlLimit;
+                    $sqlSum = $sqlBeginn.(isset($extSql)?$extSql:'').$sqlEnd.$sqlWhere.(isset($extSql)?$sqlOrder:$sqlOrderShort).$sqlLimit;
 
 
 
