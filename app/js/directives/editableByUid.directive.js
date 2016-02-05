@@ -1,5 +1,9 @@
-// Direktive zum setzen des Atributs contenteditable,
-// wenn der user ubereinstimmt oder admin ist
+/**
+ * Direktive zum setzen des Atributs contenteditable,
+ * wenn der user ubereinstimmt oder admin ist
+ * @ param int user needs logged UserID as attr on colling element
+ * @ param int user needs creator-UserID as attr on colling element
+ */
 app.directive('editableByUid', function($compile){
     return {
         restrict : 'A',
@@ -14,9 +18,11 @@ app.directive('editableByUid', function($compile){
         },
 
         link: function(scope, element, attrs){
+
             scope.$watch('creator', function(){
                 // Anfrage ob creator existiert und creater gleich eingelogter user
                 // oder Admin ist
+                console.log(scope.creator+' '+scope.user);
                 if(scope.creator.length >0 &&
                     (angular.equals(scope.creator,scope.user) || scope.$$nextSibling.user.credits == 2)
                 ){

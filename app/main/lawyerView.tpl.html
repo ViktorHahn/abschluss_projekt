@@ -17,8 +17,8 @@
                 <p name="title"
                    data-ng-minlength="2"
                    data-ng-if="lawyer.title"
-                   data-creator="lawyer.userID"
-                   data-user="user.uid"
+                   data-creator="{{lawyer.userID}}"
+                   data-user="{{user.uid}}"
                    data-srip-br="true"
                    data-ng-model="lawyer.title"
                    data-ng-transclude
@@ -33,8 +33,8 @@
             <div class="msg_wrapper">
                 <p name="lastname"
                    data-ng-minlength="3"
-                   data-creator="lawyer.userID"
-                   data-user="user.uid"
+                   data-creator="{{lawyer.userID}}"
+                   data-user="{{user.uid}}"
                    data-srip-br="true"
                    data-ng-model="lawyer.lastname"
                    data-ng-transclude
@@ -50,9 +50,9 @@
 
             <div class="msg_wrapper">
                 <p name="firstname"
-                   data-creator="lawyer.userID"
+                   data-creator="{{lawyer.userID}}"
                    data-ng-minlength="3"
-                   data-user="user.uid"
+                   data-user="{{user.uid}}"
                    data-srip-br="true"
                    data-ng-model="lawyer.firstname"
                    data-ng-transclude
@@ -70,8 +70,8 @@
             <div class="msg_wrapper">
                 <p name="office"
                    data-ng-minlength="3"
-                   data-creator="lawyer.userID"
-                   data-user="user.uid"
+                   data-creator="{{lawyer.userID}}"
+                   data-user="{{user.uid}}"
                    data-srip-br="true"
                    data-ng-model="lawyer.office"
                    data-ng-transclude
@@ -83,8 +83,8 @@
                 </span>
             </div>
             <div class="msg_wrapper">
-                <p name="street" data-creator="lawyer.userID"
-                   data-user="user.uid"
+                <p name="street" data-creator="{{lawyer.userID}}"
+                   data-user="{{user.uid}}"
                    data-srip-br="true"
                    data-ng-model="lawyer.street"
                    data-ng-transclude
@@ -100,8 +100,8 @@
             <div class="msg_wrapper">
                 <p name="housenr"
                    data-ng-minlength="1"
-                   data-creator="lawyer.userID"
-                   data-user="user.uid"
+                   data-creator="{{lawyer.userID}}"
+                   data-user="{{user.uid}}"
                    data-srip-br="true"
                    data-ng-model="lawyer.housenr"
                    data-ng-transclude
@@ -117,8 +117,8 @@
             <div class="msg_wrapper">
                 <p name="zip"
                    data-ng-minlength="5"
-                   data-creator="lawyer.userID"
-                   data-user="user.uid"
+                   data-creator="{{lawyer.userID}}"
+                   data-user="{{user.uid}}"
                    data-srip-br="true"
                    data-ng-model="lawyer.zip"
                    data-ng-transclude
@@ -134,8 +134,8 @@
             <div class="msg_wrapper">
                 <p name="domicile"
                    data-ng-minlength="3"
-                   data-creator="lawyer.userID"
-                   data-user="user.uid"
+                   data-creator="{{lawyer.userID}}"
+                   data-user="{{user.uid}}"
                    data-srip-br="true"
                    data-ng-model="lawyer.domicile"
                    data-ng-transclude
@@ -154,8 +154,8 @@
                 <div class="msg_wrapper">
                     <p name="phone"
                        data-ng-minlength="5"
-                       data-creator="lawyer.userID"
-                       data-user="user.uid"
+                       data-creator="{{lawyer.userID}}"
+                       data-user="{{user.uid}}"
                        data-srip-br="true"
                        data-ng-model="lawyer.phone"
                        data-ng-transclude

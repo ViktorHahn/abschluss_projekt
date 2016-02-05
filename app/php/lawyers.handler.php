@@ -39,7 +39,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_X_CSRF_TOKEN'])) {
                 case 'getLawyers' :
 
                     // SQL
-                    $sql = 'SELECT userID, gender, lastname, firstname, zip, domicile
+                    $sql = 'SELECT userID, gender, lastname, firstname, zip, domicile, lawyerTag
                               FROM users
                               WHERE usertype = 2 AND status = 0 LIMIT 10';
 
@@ -67,8 +67,9 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_X_CSRF_TOKEN'])) {
                     if(isset($request->lawyerID) &&
                         isset($request->lawyerName)
                     ){
+
                         // SQL
-                        $sql = 'SELECT userID, lastname, firstname, street, housenr, domicile, zip, phone, office, title, gender, email
+                        $sql = 'SELECT userID, lastname, firstname, street, housenr, domicile, zip, phone, office, title, gender, email, lawyerTag
                                   FROM users
                                   WHERE usertype = 2 AND
                                         userID = "'.$request->lawyerID.'" AND

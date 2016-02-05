@@ -7,12 +7,8 @@ app.directive('searchPlaceholder', function($location, $routeParams){
                 $routeParams.lawyerName ||
                 $routeParams.lawyerID
             ){
-                console.log($location.path());
+
             }
-            scope.$on('routeChangeSuccess', function(){
-                console.log('jo');
-                console.log($routeParams.lawyerID);
-            })
         }
     }
 

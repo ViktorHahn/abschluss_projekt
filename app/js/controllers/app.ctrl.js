@@ -12,7 +12,7 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
     $scope.msg = '';
     $scope.menuToggle = false;
 
-    // Toggle Methode des Menues
+    // Toggle Methode zum Auf- und Zuklappen des Menues
     $scope.toggle = function(){
         $scope.menuToggle = !$scope.menuToggle;
     };
@@ -39,9 +39,14 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
 
     });
 
-    //Weiterleitung auf die Gruppen-Suchfunktion
+    //Weiterleitung auf die Gruppen-Suchfunktion oder Anwalt-Suchfunktion
     $scope.sendOn = function(){
         if(srchData.term.length > 0){
+            // Unterscheidung ob der User sich auf Seiten der Anwaelte befindet
+            $scope.$on('routeChangeStart', function(){
+
+            });
+
             // Wenn tag groesser 0, dann tag, sonst '';
             var tag = (srchData.tag.length > 0) ? srchData.tag : '';
             $location.path('/groups/'+srchData.term+'/'+tag);
@@ -74,7 +79,10 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
 
     // Eventlistener zum Sperren von Routes, wenn user keine Berechtigung besitzt
     $scope.$on('$routeChangeStart', function (event, next) {
-
+        console.dir($routeParams);
+        var lawyerLocation = /^lawyer.*/;
+        console.dir(lawyerLocation.test($location.path()));
+        console.dir($location.path());
         //zugriff auf next als nächste Route und app.config.js access-Definition und Abgleich ob User eingeloggt ist
         if(next.access != undefined &&
             !next.access.allowAnonymous &&
