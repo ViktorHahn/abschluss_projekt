@@ -10,6 +10,7 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
     srchData.tag = '';
     //Msg Ausgabe
     $scope.msg = '';
+    // Eigenschaft zum Toggle des Menues
     $scope.menuToggle = false;
 
     // Toggle Methode zum Auf- und Zuklappen des Menues
@@ -39,17 +40,27 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
 
     });
 
-    //Weiterleitung auf die Gruppen-Suchfunktion oder Anwalt-Suchfunktion
+    //Weiterleitung auf die Gruppen- oder Anwalt-Suchfunktion
     $scope.sendOn = function(){
-        if(srchData.term.length > 0){
+        // Wenn tag gesetzt, dann tag, sonst leer;
+        var tag = (srchData.tag.length > 0) ? srchData.tag : '';
+        var term= (srchData.term.length > 0) ? srchData.term : '';
+        if(term || tag){
             // Unterscheidung ob der User sich auf Seiten der Anwaelte befindet
-            $scope.$on('routeChangeStart', function(){
+            //$scope.$on('routeChangeSuccess', function(){
+                console.log('senden');
+                // RegEx um den LocationHash /lawyer* zu testen
+                var lawyerLocation = /^\/lawyer.*/;
+                // Wenn Besucher sich auf Seiten der Anwaelte befindet, dann Suchanfrage nach Anwaelten
+                if(lawyerLocation.test($location.path())){
+                    $location.path('/lawyers/'+srchData.term+'/'+tag);
+                }
+                // Wenn nicht auf Seiten der Anwaelte, dann Suche nach gruppen
+                else {
+                    $location.path('/groups/'+srchData.term+'/'+tag);
+                }
+            //});
 
-            });
-
-            // Wenn tag groesser 0, dann tag, sonst '';
-            var tag = (srchData.tag.length > 0) ? srchData.tag : '';
-            $location.path('/groups/'+srchData.term+'/'+tag);
         }
     };
 
@@ -79,18 +90,12 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
 
     // Eventlistener zum Sperren von Routes, wenn user keine Berechtigung besitzt
     $scope.$on('$routeChangeStart', function (event, next) {
-        console.dir($routeParams);
-        var lawyerLocation = /^lawyer.*/;
-        console.dir(lawyerLocation.test($location.path()));
-        console.dir($location.path());
         //zugriff auf next als nächste Route und app.config.js access-Definition und Abgleich ob User eingeloggt ist
         if(next.access != undefined &&
             !next.access.allowAnonymous &&
             $rootScope.user.uid == null){
             $location.path('/login');
         }
-
-
     });
     // Ueberprufen ob der User die entsprechende User-Profilseite aufrufen darf
 

@@ -11,9 +11,9 @@
         <!-- Die Validierung von Inhalten, der contenteditable-Attribute, ist über die Direktive ngForm realisiert -->
         <article class="law-info" data-ng-form="editForm">
             <h1>Name:</h1>
-            <p>{{lawyer.gender}}</p>
             <!--das name-Attribunt ist im p-Element nicht erlaubt. Ist jedoch fuer die Validierung noetig -->
             <div class="msg_wrapper">
+                <p>Nachname:</p>
                 <p name="title"
                    data-ng-minlength="2"
                    data-ng-if="lawyer.title"

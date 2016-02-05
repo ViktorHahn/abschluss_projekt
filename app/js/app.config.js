@@ -59,6 +59,18 @@ app.config(['$routeProvider', function ($routeProvider, $routeParams) {
             controller: 'lawyersCtrl',
             access: {allowAnonymous : true}
         })
+        .when('/lawyers/:lterm', {
+            title: 'dJury - Anwälte',
+            templateUrl: 'main/lawyers.tpl.html',
+            controller: 'lawyersCtrl',
+            access: {allowAnonymous : true}
+        })
+        .when('/lawyers/:lterm/:ltag', {
+            title: 'dJury - Anwälte',
+            templateUrl: 'main/lawyers.tpl.html',
+            controller: 'lawyersCtrl',
+            access: {allowAnonymous : true}
+        })
         .when('/lawyer/:lawyerName/:lawyerID', {
             title: '',
             templateUrl: 'main/lawyerView.tpl.html',
@@ -80,3 +92,4 @@ app.config(['$routeProvider', function ($routeProvider, $routeParams) {
             redirectTo: '/'
         })
 }]);
+// toDo: Title-Eintrag von routeParams - fuer GruppenView / LawyerView
