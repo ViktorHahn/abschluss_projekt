@@ -7,7 +7,7 @@
 <!-- Uebersicht der Anwaelte -->
 <section>
     <h1>&Uuml;bersicht der Rechtsanw&auml;lte</h1>
-    <section data-ng-repeat="lawyer in lawyers">
+    <section data-ng-repeat="lawyer in lawyers | orderBy:'-priority'">
 
         <!-- Ausgabe des Anwalts-->
         <article class="lawyers">

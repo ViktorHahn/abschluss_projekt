@@ -38,12 +38,85 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_X_CSRF_TOKEN'])) {
 
                 case 'getLawyers' :
 
+                    // Allgemeine Suchanfage der Gruppen
                     // SQL
-                    $sql = 'SELECT userID, gender, lastname, firstname, zip, domicile, lawyerTag
-                              FROM users
-                              WHERE usertype = 2 AND status = 0 LIMIT 10';
+                    $sqlBeginn = 'SELECT  userID, gender, lastname, firstname, zip, domicile, lawyerTag';
 
-                    $result = $db->query($sql);
+                    $sqlEnd = ' FROM users';
+
+
+                    // Initialisieren von SQL-Variablen die leer sein koennen
+                    $tagSQL = null;
+                    $tagSQLast = null;
+                    $extSql = null;
+                    $termsSqlName = null;
+                    $termsSqlDomicile = null;
+
+                    // Ueberpruefen ob Suchbegriff gesetzt ist
+                    if(isset($request->lsrchTerm) &&
+                        strlen($request->lsrchTerm) > 0
+                    ){
+                        // Gibt es mehrere Suchbegriffe?
+                        $srchTerms = explode(' ', $request->lsrchTerm);
+
+                        // Vorbereiten der SQL's fuer die Suchbegriffe
+                        foreach($srchTerms as $value){
+                            if($value != ''){
+                                $termsSqlName .= 'lastname LIKE "%'.$value.'%" OR ';
+                                $termsSqlDomicile .= 'domicile LIKE "%'.$value.'%" OR ';
+                            }
+
+                        }
+                        // Trimmen der Vorbereitete SQL's fuer die Suchbegriffe
+                        $termsSqlName = trim($termsSqlName,' OR ');
+                        $termsSqlDomicile = trim($termsSqlDomicile,' OR ');
+
+
+                        // Ueberpruefen ob Tag gesetzt ist
+                        if(isset($request->ltag) &&
+                            strlen($request->ltag) > 0
+                        ){
+                            // Erstellen von Tag-SQL's
+                            $tagSQL = 'lawyerTag Like "%'.$request->ltag.'%" AND';
+                            $tagSQLast = 'WHEN lawyerTag Like "%'.$request->ltag.'%" THEN 1';
+                        } // END IF isset Tag
+
+                        // Priorisierung der ausgegeben Treffer innerhalb der SQL nach Tag und Suchbegriff
+                        $extSql =', CASE
+                                            WHEN '.(isset($tagSQL)?$tagSQL:'').' ('.$termsSqlDomicile.') AND ('.$termsSqlName.') THEN 4
+                                            WHEN '.(isset($tagSQL)?$tagSQL:'').' ('.$termsSqlName.') THEN 3
+                                            WHEN '.(isset($tagSQL)?$tagSQL:'').' ('.$termsSqlDomicile.') THEN 2
+                                            '.(isset($tagSQLast)?$tagSQLast:'').'
+                                            ELSE ""
+                                        END AS "priority"
+                                        ';
+                    } // END IF searchTerm
+
+                    // Abschluss der SQL
+                    // WHERE Bedingung
+                    $sqlWhere = ' WHERE usertype = 2
+                                            AND status = 0
+                                            ';
+
+                    // Sortierung
+                    $sqlOrder = ' ORDER BY priority DESC, lastname ASC';
+
+                    // Limitierung
+                    $sqlLimit = ' LIMIT 10;';
+
+
+                    // Erstellen der gesamten SQL
+                    $sqlSum = $sqlBeginn.(isset($extSql)?$extSql:'').$sqlEnd.$sqlWhere.(isset($extSql)?$sqlOrder:'').$sqlLimit;
+
+
+
+//                    // SQL
+//                    $sql = 'SELECT userID, gender, lastname, firstname, zip, domicile, lawyerTag
+//                              FROM users
+//                              WHERE usertype = 2 AND status = 0 LIMIT 10';
+
+
+                    $result = $db->query($sqlSum);
                     $r = is_object($result)?$result->num_rows:0;
 
                     // Gab es Treffer?

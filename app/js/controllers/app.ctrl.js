@@ -46,21 +46,16 @@ app.controller('appCtrl', function ($scope, $rootScope, $location, $timeout, $ro
         var tag = (srchData.tag.length > 0) ? srchData.tag : '';
         var term= (srchData.term.length > 0) ? srchData.term : '';
         if(term || tag){
-            // Unterscheidung ob der User sich auf Seiten der Anwaelte befindet
-            //$scope.$on('routeChangeSuccess', function(){
-                console.log('senden');
                 // RegEx um den LocationHash /lawyer* zu testen
                 var lawyerLocation = /^\/lawyer.*/;
                 // Wenn Besucher sich auf Seiten der Anwaelte befindet, dann Suchanfrage nach Anwaelten
                 if(lawyerLocation.test($location.path())){
                     $location.path('/lawyers/'+srchData.term+'/'+tag);
                 }
-                // Wenn nicht auf Seiten der Anwaelte, dann Suche nach gruppen
+                // Wenn nicht auf Seiten der Anwaelte, dann Suche nach Gruppen
                 else {
                     $location.path('/groups/'+srchData.term+'/'+tag);
                 }
-            //});
-
         }
     };
 

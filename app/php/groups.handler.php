@@ -436,11 +436,10 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_X_CSRF_TOKEN'])) {
 
                     }// END IF isset srchTerm
 
+
+                    // Abschluss der SQL
                     // Nur aktive Gruppen waehlen
                     $sqlWhereShort = ' WHERE groups.status = 0';
-                    // Abschluss der SQL
-
-
 
                     // Sortierung
                     $sqlOrder = ' ORDER BY priority DESC, cpriority DESC';
@@ -450,7 +449,7 @@ if(isset($_SESSION['XSRF']) && isset($_SERVER['HTTP_X_CSRF_TOKEN'])) {
 
                     // Erstellen der gesamten SQL
                     $sqlSum = $sqlBeginn.(isset($extSql)?$extSql:'').$sqlEnd.(isset($extSql)?$sqlWhere:$sqlWhereShort).(isset($extSql)?$sqlOrder:'').$sqlLimit;
-                    //die($sqlSum);
+
                     // Abschicken der SQL
                     $result = $db->query($sqlSum);
 
